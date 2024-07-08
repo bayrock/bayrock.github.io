@@ -1,0 +1,25 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Card from '../components/Card.astro';
+const pageTitle = "Posts";
+---
+<Layout pageTitle={pageTitle}>
+    <div class="hero posts-hero">
+        <img width="50%" alt="dev-focus" src="/dev-focus.svg"/>
+    </div>
+    <h2>Blog</h2>
+    <ul role="list" class="link-card-grid">
+        <Card
+            url="#"
+            image="/placeholder.webp"
+            title="Post 1"
+            desc="Coming soon!"
+        />
+        <Card
+            url="#"
+            image="/placeholder.webp"
+            title="Post 2"
+            desc="Coming soon!"
+        />
+    </ul>
+</Layout>
