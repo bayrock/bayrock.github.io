@@ -1,2 +1,2 @@
-# 💻 Portfolio
-*A new beginning for https://bayrock.github.io*
+# 💻 https://bayrock.dev
+*A new beginning.*
