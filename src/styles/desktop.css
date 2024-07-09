@@ -89,13 +89,13 @@ small, li {
     text-underline-offset: 6px;
 }
 
-/* Gifs */
+/* Heros */
 .hero {
     margin: 20px 0 0 0;
     text-align: center;
 }
 
-/* Badge */
+/* Badges */
 .badge {
     background-color: #584966;
     color: var(--text);
@@ -179,7 +179,7 @@ small, li {
     padding: 0;
 }
 
-/* Button */
+/* Buttons */
 .btn {
     text-align: center;
     background: rgba(0,0,0,0);
@@ -281,109 +281,3 @@ footer {
     color: var(--text-link);
     text-decoration: none;
 }
-
-/* Theme Icon */
-html.light {
-    background-color: var(--background-light);
-    color: var(--text-light);
-}
-
-.light .navbar__title > a {
-    color: var(--text-light);
-}
-
-.light .navbar__menu > a {
-    color: var(--text-light);
-}
-
-.light .card__title {
-    color: var(--text-light); 
-}
-
-.light .card__txt {
-    color: var(--text-light); 
-}
-
-.light .btn {
-    color: var(--text-light);
-}
-
-.light .btn:hover {
-    color: var(--text);
-}
-
-.light .icon__link {
-    border: 2px solid var(--text-light);
-}
-
-.light .icon__link:hover {
-    border-color: var(--text-link);
-}
-
-.light .git-icon {
-    content: url("/github-mark.svg");
-}
-
-.light .mail-icon {
-    content: url("/mail.svg");
-}
-
-.light .linked-in {
-    content: url("/li-in.png");
-}
-
-.light .index-hero img {
-    content: url("/reading-light.svg");
-}
-
-.light .works-hero img {
-    content: url("/personal-file-light.svg");
-}
-
-.light .posts-hero img {
-    content: url("/dev-focus-light.svg");
-}
-
-.light .badge__link {
-    color: var(--text-link);
-}
-
-/* Media Query */
-@media only screen and (max-width: 600px) {
-    body {
-        width: 350px;
-    }
-
-    .navbar {
-        display: initial;
-    }
-
-    .navbar__title {
-        text-align: center;
-    }
-
-    .navbar__menu {
-        text-align: center;
-    }
-
-    .navbar__menu > a {
-        margin: 0 11px;
-    }
-
-    .skills__img {
-        height: 30px;
-        width: 30px;
-        margin: 8px 1px;
-    }
-
-    .badge__list {
-        font-size: 0.9rem;
-        text-indent: 0;
-    }
-
-    .pro-img {
-        height: auto;
-        width: 350px;
-    }
-}
-
