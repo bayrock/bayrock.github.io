@@ -1,5 +1,6 @@
 /* Imports */
 @import url('https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap');
+
 /* Global styles */
 :root {
     --background: #1e1e2e; 
@@ -256,10 +257,6 @@ footer {
 
 .mail-icon {
     content: url("/mail-light.svg");
-}
-
-.linked-in {
-    content: url("/li-in-light.png");
 }
 
 /* 404 */
