@@ -80,6 +80,7 @@ small, li {
 }
 
 .navbar__menu > a {
+    display: none;
     margin: 0 10px;
 }
 
