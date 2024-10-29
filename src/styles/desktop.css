@@ -96,6 +96,11 @@ small, li {
     text-align: center;
 }
 
+.pfp {
+    max-width: 150px;
+    border-radius: 120px;
+}
+
 /* Badges */
 .badge {
     background-color: #584966;
@@ -206,13 +211,8 @@ small, li {
 .skills__img {
     margin: 8px 4px;
 }
-
-/* Items */
-.center {
-    text-align: center;
-}
-
-.pro-img {
+ /* Works */
+.project-img {
     border-radius: 16px;
     margin-top: 10px;
 }
@@ -281,6 +281,11 @@ footer {
 .lost__link {
     color: var(--text-link);
     text-decoration: none;
+}
+
+ /* Helpers */
+.center {
+    text-align: center;
 }
 
 .pronouns {

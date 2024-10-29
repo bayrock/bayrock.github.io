@@ -1,6 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-import MarkdownWorksLayout from '../../layouts/MarkdownWorksLayout.astro';
+import WorksLayout from '../../layouts/WorksLayout.astro';
 
 export async function getStaticPaths() {
     const projectEntries = await getCollection('projects');
@@ -13,7 +13,7 @@ const { entry } = Astro.props;
 const { Content } = await entry.render();
 ---
 
-<MarkdownWorksLayout frontmatter={entry.data}>
+<WorksLayout frontmatter={entry.data}>
     <Content />
-</MarkdownWorksLayout>
+</WorksLayout>
 

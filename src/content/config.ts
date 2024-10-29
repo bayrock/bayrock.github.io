@@ -9,6 +9,10 @@ const projectsCollection = defineCollection({
         url: z.string(),
         alt: z.string()
       }),
+      hero: z.object({
+        url: z.string(),
+        alt: z.string()
+      }),
       worksImage1: z.object({
         url: z.string(),
         alt: z.string()

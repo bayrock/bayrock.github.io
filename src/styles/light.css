@@ -44,16 +44,16 @@ html.light {
     content: url("/mail.svg");
 }
 
-.light .index-hero img {
-    content: url("/reading-light.svg");
+.light .works-hero img {
+    content: url("/works-light.svg");
 }
 
-.light .works-hero img {
-    content: url("/personal-file-light.svg");
+.light .project-hero img {
+    content: url("/project-light.svg");
 }
 
 .light .posts-hero img {
-    content: url("/dev-focus-light.svg");
+    content: url("/posts-light.svg");
 }
 
 .light .badge__link {

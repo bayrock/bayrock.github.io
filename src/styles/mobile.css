@@ -31,8 +31,12 @@
         text-indent: 0;
     }
 
-    .pro-img {
+    .project-img {
         height: auto;
         width: 350px;
+    }
+
+    .pfp {
+        max-width: 125px;
     }
 }

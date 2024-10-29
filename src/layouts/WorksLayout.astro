@@ -3,8 +3,8 @@ import BaseLayout from './Layout.astro';
 const { frontmatter } = Astro.props;
 ---
 <BaseLayout pageTitle={frontmatter.title}>
-    <div class="hero works-hero">
-        <img width="43%" alt="personal-file" src="/personal-file.svg"/>
+    <div class="hero project-hero">
+        <img width="43%" alt={frontmatter.hero.alt} src={frontmatter.hero.url}/>
     </div>
     <h2>{frontmatter.title}</h2>
     <slot />
@@ -15,8 +15,8 @@ const { frontmatter } = Astro.props;
         <li><span class="badge badge--item">GITHUB</span><a class="badge__link" href={frontmatter.github} target="_blank">{frontmatter.github}</a></li>
     </ul>
     <div class="center">
-        <img class="pro-img" width="500px" height="281" src={frontmatter.worksImage1.url} alt={frontmatter.worksImage1.alt} />
-        <img class="pro-img" width="500px" height="281" src={frontmatter.worksImage2.url} alt={frontmatter.worksImage2.alt} />
+        <img class="project-img" width="500px" height="281" src={frontmatter.worksImage1.url} alt={frontmatter.worksImage1.alt} />
+        <img class="project-img" width="500px" height="281" src={frontmatter.worksImage2.url} alt={frontmatter.worksImage2.alt} />
     </div>
 </BaseLayout>
 
