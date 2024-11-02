@@ -59,3 +59,7 @@ html.light {
 .light .badge__link {
     color: var(--text-link);
 }
+
+.light .invert {
+    filter: invert(0%);
+}
