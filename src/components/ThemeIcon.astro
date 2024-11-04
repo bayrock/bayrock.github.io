@@ -18,11 +18,11 @@
         rotate: 10deg;
     }
 
-    .moon { fill: #fdebf3; }
+    .moon { fill: var(--pink); }
     .sun { fill: transparent; }
 
     :global(.light) .moon { fill: transparent; }
-    :global(.light) .sun { fill: #1e1e2e; }
+    :global(.light) .sun { fill: var(--black); }
 </style>
 <script is:inline >
     const theme = (() => {

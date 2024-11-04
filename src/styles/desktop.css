@@ -3,20 +3,18 @@
 
 /* Global styles */
 :root {
-    --background: #000000; 
-    --background-light: #fdebf3;
-    --button: #78c2ad;
-    --text: #ffffff;
-    --text-light: #000000; 
-    --text-link: #78c2ad;
-    --accent: #d67d77;
+    --black: #000000; 
+    --brand: #ff6671;
+    --accent: #78c2ad;
+    --pink: #ffe6e7;
+    --white: #ffffff;
     --header: 'Play', sans-serif;
     --body: 'Josefin Sans', sans-serif; 
 }
 
 html {
-    background-color: var(--background);
-    color: var(--text);
+    background-color: var(--black);
+    color: var(--white);
 }
 
 body {
@@ -37,7 +35,7 @@ h1 {
 }
 
 h2 {
-    text-decoration: underline var(--accent);
+    text-decoration: underline var(--brand);
     text-decoration-thickness: 4px;
     text-underline-offset: 6px;
     font-size: 2.0rem;
@@ -75,7 +73,7 @@ small, li {
 }
 
 .navbar__title > a, .navbar__menu > a {
-    color: var(--text);
+    color: var(--white);
     text-decoration: none;
 }
 
@@ -85,7 +83,7 @@ small, li {
 }
 
 .navbar__title > a:hover, .navbar__menu > a:hover, .navbar__menu > a:focus {
-    text-decoration: underline var(--accent);
+    text-decoration: underline var(--brand);
     text-decoration-thickness: 2px;
     text-underline-offset: 6px;
 }
@@ -104,7 +102,7 @@ small, li {
 /* Badges */
 .badge {
     background-color: #584966;
-    color: var(--text);
+    color: var(--white);
     border-radius: 6px;
     font-family: var(--body);
     font-weight: 600;
@@ -130,7 +128,7 @@ small, li {
 }
 
 .badge__link {
-    color: var(--text-link);
+    color: var(--accent);
     text-decoration: none;
 }
 
@@ -151,7 +149,7 @@ small, li {
     text-decoration: none;
     line-height: 1.4;
     border-radius: 8px;
-    color: var(--text);
+    color: var(--white);
 }
 
 .card__img {
@@ -189,17 +187,17 @@ small, li {
 .btn {
     text-align: center;
     background: rgba(0,0,0,0);
-    border: 2px solid var(--button);
+    border: 2px solid var(--accent);
     border-radius: 8px;
-    color: var(--text);
+    color: var(--white);
     font: 600 16px var(--body);
     padding: 8px 16px;
     transition: background-color 0.4s, color 0.4s;
 }
 
 .btn:hover {
-    background-color: var(--button);
-    color: var(--text-light);
+    background-color: var(--accent);
+    color: var(--white);
     cursor: pointer;
 }
 
@@ -223,7 +221,7 @@ footer {
 }
 
 .footer__link {
-    color: var(--text-link);
+    color: var(--accent);
     text-decoration: none;
 }
 
@@ -244,20 +242,11 @@ footer {
     height: 20px;
     width: 20px;
     border-radius: 50%;
-    border: 2px solid #fdebf3;
+    border: 2px solid var(--pink);
 }
 
 .icon__link:hover {
-    border-color: var(--text-link);
-}
-
-
-.git-icon {
-    content: url("/github-mark-light.svg");
-}
-
-.mail-icon {
-    content: url("/mail-light.svg");
+    border-color: var(--accent);
 }
 
 /* 404 */
@@ -279,7 +268,7 @@ footer {
 }
 
 .lost__link {
-    color: var(--text-link);
+    color: var(--accent);
     text-decoration: none;
 }
 
@@ -288,7 +277,11 @@ footer {
     text-align: center;
 }
 
-.invert {
+.invert-white {
+    filter: invert(0%);
+}
+
+.invert-black {
     filter: invert(100%);
 }
 
