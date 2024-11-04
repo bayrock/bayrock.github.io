@@ -78,7 +78,6 @@ small, li {
 }
 
 .navbar__menu > a {
-    display: none;
     margin: 0 10px;
 }
 
@@ -283,6 +282,10 @@ footer {
 
 .invert-black {
     filter: invert(100%);
+}
+
+.hidden {
+    display: none;
 }
 
 .pronouns {
