@@ -248,6 +248,10 @@ footer {
     border-color: var(--accent);
 }
 
+.icon__clock {
+    vertical-align: -1.5px;
+}
+
 /* 404 */
 .lost {
     margin-top: 30%;
