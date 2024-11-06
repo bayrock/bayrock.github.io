@@ -3,18 +3,16 @@
 
 /* Global styles */
 :root {
-    --black: #000000; 
     --brand: #ff6671;
     --accent: #78c2ad;
     --pink: #ffe6e7;
-    --white: #ffffff;
     --header: 'Play', sans-serif;
     --body: 'Josefin Sans', sans-serif; 
 }
 
 html {
-    background-color: var(--black);
-    color: var(--white);
+    background-color: black;
+    color: white;
 }
 
 body {
@@ -73,7 +71,7 @@ small, li {
 }
 
 .navbar__title > a, .navbar__menu > a {
-    color: var(--white);
+    color: white;
     text-decoration: none;
 }
 
@@ -101,7 +99,7 @@ small, li {
 /* Badges */
 .badge {
     background-color: #584966;
-    color: var(--white);
+    color: white;
     border-radius: 6px;
     font-family: var(--body);
     font-weight: 600;
@@ -148,7 +146,7 @@ small, li {
     text-decoration: none;
     line-height: 1.4;
     border-radius: 8px;
-    color: var(--white);
+    color: white;
 }
 
 .card__img {
@@ -188,7 +186,7 @@ small, li {
     background: rgba(0,0,0,0);
     border: 2px solid var(--accent);
     border-radius: 8px;
-    color: var(--white);
+    color: white;
     font: 600 16px var(--body);
     padding: 8px 16px;
     transition: background-color 0.4s, color 0.4s;
@@ -196,7 +194,7 @@ small, li {
 
 .btn:hover {
     background-color: var(--accent);
-    color: var(--white);
+    color: white;
     cursor: pointer;
 }
 
@@ -275,19 +273,16 @@ footer {
     text-decoration: none;
 }
 
+/* Colors */
+.white { color: white; }
+.grey { color: grey; }
+.black { color: black; }
+.brand { color: var(--brand); }
+.accent { color: var(--accent); }
+.pink { color: var(--pink); }
+
  /* Helpers */
-.center {
-    text-align: center;
-}
-
-.invert-white {
-    filter: invert(0%);
-}
-
-.invert-black {
-    filter: invert(100%);
-}
-
-.hidden {
-    display: none;
-}
+.center { text-align: center; }
+.invert-white { filter: invert(0%); }
+.invert-black { filter: invert(100%); }
+.hidden { display: none; }

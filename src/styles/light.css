@@ -1,35 +1,35 @@
 /* Theme Icon */
 html.light {
     background-color: var(--pink);
-    color: var(--black);
+    color: black;
 }
 
 .light .navbar__title > a {
-    color: var(--black);
+    color: black;
 }
 
 .light .navbar__menu > a {
-    color: var(--black);
+    color: black;
 }
 
 .light .card__title {
-    color: var(--black); 
+    color: black; 
 }
 
 .light .card__txt {
-    color: var(--black); 
+    color: black; 
 }
 
 .light .btn {
-    color: var(--black);
+    color: black;
 }
 
 .light .btn:hover {
-    color: var(--black);
+    color: black;
 }
 
 .light .icon__link {
-    border: 2px solid var(--black);
+    border: 2px solid black;
 }
 
 .light .icon__link:hover {
