@@ -23,7 +23,7 @@ body {
     text-align: justify;
 }
 
-h1, h2, .pronouns {
+h1, h2 {
     font-family: var(--header);
     font-weight: normal;
 }
@@ -290,9 +290,4 @@ footer {
 
 .hidden {
     display: none;
-}
-
-.pronouns {
-    font-size: 1.5rem;
-    font-color: 
 }
