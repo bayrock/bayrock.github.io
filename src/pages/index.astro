@@ -1,11 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import githubID from '../../ghid.mjs';
+import Avatar from '../components/Avatar.astro';
 const pageTitle = "bayrock.dev";
 ---
 <Layout pageTitle={pageTitle}>
     <div class="hero">
-        <img alt="" src=`https://avatars.githubusercontent.com/u/${githubID}?v=4` class="pfp"/>
+        <Avatar />
     </div>
     <h1>Bailey<span title="pronouns" class="grey" style="font-size: 0.8rem;"> (she/her)</span></h1>
     <span class="badge">Developer & Designer</span>
@@ -31,7 +31,7 @@ const pageTitle = "bayrock.dev";
         <img class="skills__img" width="46" height="46" title="Figma" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg"/>
         <img class="skills__img invert-black" width="46" height="46" title="Astro" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/astro/astro-plain.svg"/>
         <img class="skills__img" width="46" height="46" title="Vite" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg"/>
-        <img class="skills__img" width="46" height="46" title="Arch" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/archlinux/archlinux-original.svg"/>
+        <img class="skills__img" width="46" height="46" title="Arch (Linux)" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/archlinux/archlinux-original.svg"/>
         <img class="skills__img" width="46" height="46" title="Git" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg"/>
     </div>
     <h2>Interests</h2>
