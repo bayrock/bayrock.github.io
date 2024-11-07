@@ -4,9 +4,20 @@ html.light {
     color: black;
 }
 
+/* Navigation */
+.light .navlink { color: black; }
+
+/* Icons */
+.light .icon__link { border: 2px solid black; }
+.light .icon__link:hover { border-color: var(--accent); }
+
 /* Buttons */
 .light .btn { color: black; }
 .light .btn:hover { color: black; }
+
+/* Cards */
+.light .card__title { color: black; }
+.light .card__txt { color: black; }
 
 /* Helpers */
 .light .invert-white { filter: invert(100%); }

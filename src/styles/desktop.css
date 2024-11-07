@@ -106,6 +106,7 @@ small, li { font-family: var(--body); }
 .link { text-decoration: none; }
 .link:hover { text-decoration: underline; }
 .hidden { display: none; }
+.margin { margin: 0 10px; }
 
 .grid {
     display: grid;

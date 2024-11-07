@@ -3,11 +3,11 @@ import ThemeIcon from './ThemeIcon.astro';
 ---
 <div class="navbar">
     <div class="navbar__title">
-        <a href="/">bayrock.dev</a>
+        <a href="/" class="navlink">bayrock.dev</a>
     </div>
     <div class="navbar__menu">
-        <a href="/projects/" class="hidden">Works</a>
-        <a href="/posts/" class="hidden">Posts</a>
+        <a href="/projects/" class="navlink margin hidden">Works</a>
+        <a href="/posts/" class="navlink margin hidden">Posts</a>
         <ThemeIcon />
     </div>
 </div>
@@ -30,27 +30,15 @@ import ThemeIcon from './ThemeIcon.astro';
         text-align: right;
     }
 
-    .navbar__title > a, .navbar__menu > a {
+    .navlink, .navlink {
         color: white;
         text-decoration: none;
     }
 
-    .navbar__menu > a {
-        margin: 0 10px;
-    }
-
-    .navbar__title > a:hover, .navbar__menu > a:hover, .navbar__menu > a:focus {
+    .navlink:hover, .navlink:focus {
         text-decoration: underline var(--brand);
         text-decoration-thickness: 2px;
         text-underline-offset: 6px;
-    }
-    
-    .light .navbar__title > a {
-        color: black;
-    }
-
-    .light .navbar__menu > a {
-        color: black;
     }
 
     @media only screen and (max-width: 600px) {
