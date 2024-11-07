@@ -7,15 +7,50 @@ const year = new Date().getFullYear();
             <li class="icon__btn"><a class="icon__link" href="https://github.com/bayrock" title="GitHub" target="_blank"><img src="/github.svg" class="invert-white"></a></li>
             <li class="icon__btn"><a class="icon__link" href="mailto: askbayrock@proton.me" title="Email"><img src="/mail.svg" class="invert-white"></a></li>
         </ul>
-        <small>&copy; {year} | made with ❤ | <a class="badge__link" href="https://github.com/bayrock/bayrock.github.io/commits/main/" title="changelog" target="_blank">changelog</a></small>
+        <small>&copy; {year} | made with ❤ | <a class="accent link" href="https://github.com/bayrock/bayrock.github.io/commits/main/" title="changelog" target="_blank">changelog</a></small>
         <br><img src="/clock.svg" class="icon__clock invert-white"> <small id="clock"></small> <small title="timezone" class="grey">(UTC -05:00)</small>
     </div>
 </footer>
 
-<!-- Realtime clock logic -->
+<style>
+    footer { margin: 4rem 0; }
+
+    .footer__link {
+        color: var(--accent);
+        text-decoration: none;
+    }
+
+    .footer {
+        cursor: default;
+        list-style: none;
+        padding: 0;
+    }
+
+    .icon__btn {
+        display: inline-block;
+        padding: 0 0.5rem;
+    }
+
+    .icon__link {
+        display: flex;
+        padding: 10px;
+        height: 20px;
+        width: 20px;
+        border-radius: 50%;
+        border: 2px solid var(--pink);
+    }
+
+    .icon__link:hover { border-color: var(--accent); }
+    .icon__clock { vertical-align: -1.5px; }
+
+    .light .icon__link { border: 2px solid black; }
+    .light .icon__link:hover { border-color: var(--accent); }
+</style>
+
 <script>
     const clock = document.getElementById('clock');
 
+    // Realtime clock logic
     function updateClock() {
         if (!clock) return;
 

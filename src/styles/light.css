@@ -1,49 +1,13 @@
-/* Theme Icon */
+/* Global */
 html.light {
     background-color: var(--pink);
     color: black;
 }
 
-.light .navbar__title > a {
-    color: black;
-}
+/* Buttons */
+.light .btn { color: black; }
+.light .btn:hover { color: black; }
 
-.light .navbar__menu > a {
-    color: black;
-}
-
-.light .card__title {
-    color: black; 
-}
-
-.light .card__txt {
-    color: black; 
-}
-
-.light .btn {
-    color: black;
-}
-
-.light .btn:hover {
-    color: black;
-}
-
-.light .icon__link {
-    border: 2px solid black;
-}
-
-.light .icon__link:hover {
-    border-color: var(--accent);
-}
-
-.light .badge__link {
-    color: var(--accent);
-}
-
-.light .invert-white {
-    filter: invert(100%);
-}
-
-.light .invert-black {
-    filter: invert(0%);
-}
+/* Helpers */
+.light .invert-white { filter: invert(100%); }
+.light .invert-black { filter: invert(0%); }

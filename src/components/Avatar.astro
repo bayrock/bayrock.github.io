@@ -2,3 +2,14 @@
 import githubID from '../../ghid.mjs';
 ---
 <img alt="" src=`https://avatars.githubusercontent.com/u/${githubID}?v=4` class="pfp"/>
+
+<style>
+    .pfp {
+        max-width: 150px;
+        border-radius: 120px;
+    }
+
+    @media only screen and (max-width: 600px) {
+        .pfp { max-width: 125px; }
+    }
+</style>

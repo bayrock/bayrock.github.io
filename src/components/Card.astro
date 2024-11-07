@@ -21,3 +21,42 @@ const { url, image, title, desc } = Astro.props;
         </p>
     </a>
 </li>
+
+<style>
+    .card {
+        list-style: none;
+        display: flex;
+        background-size: 400%;
+        padding: 20px;
+    }
+
+    .card__link {
+        width: 100%;
+        text-decoration: none;
+        line-height: 1.4;
+        border-radius: 8px;
+        color: white;
+    }
+
+    .card__title {
+        margin: 0;
+        font-family: var(--body);
+        font-size: 1.5rem;
+        font-weight: normal;
+        text-align: center;
+    }
+
+    .card__txt {
+        font-size: 1rem;
+        line-height: 1.5;
+        text-indent: 0;
+        text-align: center;
+        margin: 0.5rem 0 0;
+    }
+
+    .card__img { border-radius: 16px; }
+    .card__link:hover { transform: scale(1.05); }
+
+    .light .card__title { color: black; }
+    .light .card__txt { color: black; }
+</style>
