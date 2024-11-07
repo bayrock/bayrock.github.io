@@ -1,15 +1,18 @@
 ---
-const description = "oh no!";
 import Hero from '../components/Hero.astro';
+import Layout from '../layouts/Layout.astro';
 import '../styles/global.pcss';
+const description = "oh no!";
 ---
-<layout>
+<Layout pageTitle={description}>
     <div class="lost">
         <Hero />
-        <h1 class="lost__header brand">{ description }</h1>
+        <h1 class="lost__header brand">{description}</h1>
         <p class="lost__body grey">this place doesn't exist</p>
         <p>
-            <a class="lost__link" href="/">Return Home</a>
+            <a href="/">
+                <button class="btn">Return home</button>
+            </a>
         </p>
     </div>
-</layout>
+</Layout>
