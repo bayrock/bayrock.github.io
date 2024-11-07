@@ -36,18 +36,6 @@ html.light {
     border-color: var(--accent);
 }
 
-.light .works-hero img {
-    content: url("/works-light.svg");
-}
-
-.light .project-hero img {
-    content: url("/project-light.svg");
-}
-
-.light .posts-hero img {
-    content: url("/posts-light.svg");
-}
-
 .light .badge__link {
     color: var(--accent);
 }
