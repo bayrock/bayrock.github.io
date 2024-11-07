@@ -1,14 +1,13 @@
 ---
 const description = "oh no!";
+import Hero from '../components/Hero.astro';
 import '../styles/global.pcss';
 ---
 <layout>
     <div class="lost">
-        <div class="hero">
-            <img width="70%" alt="404" src="/404.svg"/>
-        </div>
-        <h1 class="lost__header">{ description }</h1>
-        <p class="lost__body">this place doesn't exist</p>
+        <Hero />
+        <h1 class="lost__header brand">{ description }</h1>
+        <p class="lost__body grey">this place doesn't exist</p>
         <p>
             <a class="lost__link" href="/">Return Home</a>
         </p>

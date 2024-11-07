@@ -1,11 +1,10 @@
 ---
 import BaseLayout from './Layout.astro';
+import Hero from '../components/Hero.astro';
 const { frontmatter } = Astro.props;
 ---
 <BaseLayout pageTitle={frontmatter.title}>
-    <div class="hero project-hero">
-        <img width="43%" alt={frontmatter.hero.alt} src={frontmatter.hero.url}/>
-    </div>
+    <Hero />
     <h2>{frontmatter.title}</h2>
     <slot />
     <ul class="badge__list">

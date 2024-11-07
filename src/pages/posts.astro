@@ -1,12 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
+import Hero from '../components/Hero.astro';
 const pageTitle = "Posts";
 ---
 <Layout pageTitle={pageTitle}>
-    <div class="hero posts-hero">
-        <img width="50%" alt="" src="/posts.svg"/>
-    </div>
+    <Hero />
     <h2>Blog</h2>
     <ul role="list" class="link-card-grid">
         <Card
