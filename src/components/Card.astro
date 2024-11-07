@@ -56,4 +56,7 @@ const { url, image, title, desc } = Astro.props;
 
     .card__img { border-radius: 16px; }
     .card__link:hover { transform: scale(1.05); }
+
+    :global(.light .card__title) { color: black; }
+    :global(.light .card__txt) { color: black; }
 </style>

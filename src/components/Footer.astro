@@ -16,15 +16,15 @@ const year = new Date().getFullYear();
 <style>
     footer { margin: 4rem 0; }
 
-    .footer__link {
-        color: var(--accent);
-        text-decoration: none;
-    }
-
     .footer {
         cursor: default;
         list-style: none;
         padding: 0;
+    }
+
+    .footer__link {
+        color: var(--accent);
+        text-decoration: none;
     }
 
     .icon__btn {
@@ -43,6 +43,9 @@ const year = new Date().getFullYear();
 
     .icon__link:hover { border-color: var(--accent); }
     .icon__clock { vertical-align: -1.5px; }
+
+    :global(.light .icon__link) { border: 2px solid black; }
+    :global(.light .icon__link:hover) { border-color: var(--accent); }
 </style>
 
 <script>
