@@ -58,21 +58,6 @@ small, li { font-family: var(--body); }
     padding: 0.3em 0.6em 0.2em;
 }
 
-.badge__list {
-    text-indent: 1rem;
-    list-style: none;
-    padding: 0;
-}
-
-.badge__list > li { margin-top: 10px; }
-
-.badge--item {
-    border-radius: 4px;
-    font-size: 0.7rem;
-    margin-right: 5px;
-    padding: 0.5em 0.3em 0.3em 0.3em;
-}
-
 /* Buttons */
 .btn {
     text-align: center;
