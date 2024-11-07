@@ -85,12 +85,7 @@ small, li {
     text-underline-offset: 6px;
 }
 
-/* Heros */
-.hero {
-    margin: 20px 0 0 0;
-    text-align: center;
-}
-
+/* Avatar */
 .pfp {
     max-width: 150px;
     border-radius: 120px;
