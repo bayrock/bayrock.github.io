@@ -7,7 +7,7 @@ import ThemeIcon from './ThemeIcon.astro';
     </div>
     <div class="navbar__menu">
         <a href="/projects/" class="navbar__link margin hidden" aria-label="Visit projects page">Works</a>
-        <a href="/posts/" class="navbar__link margin hidden aria-label="Visit blog page"">Posts</a>
+        <a href="/posts/" class="navbar__link margin hidden" aria-label="Visit blog page">Posts</a>
         <ThemeIcon />
     </div>
 </div>
@@ -35,7 +35,7 @@ import ThemeIcon from './ThemeIcon.astro';
         text-decoration: none;
     }
 
-    .navbar__link:hover, .navbar__link:focus {
+    .navbar__link:hover, .navbar__menu > .navbar__link:focus {
         text-decoration: underline var(--brand);
         text-decoration-thickness: 2px;
         text-underline-offset: 6px;
