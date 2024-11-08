@@ -9,9 +9,9 @@ interface Props {
 const { url, image, title, desc } = Astro.props;
 ---
 <li class="card">
-    <a class="card__link" href={url}>
+    <a class="card__link" href={url} aria-label=`Visit ${title} page`>
         <div class="center">
-            <img class="card__img" width="226" height="127" src={image} alt="ProjectImage">
+            <img class="card__img" width="226" height="127" src={image} alt="thumbnail">
         </div>
         <h3 class="card__title">
             {title}
