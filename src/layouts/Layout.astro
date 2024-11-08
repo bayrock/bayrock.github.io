@@ -27,9 +27,9 @@ const { pageTitle } = Astro.props;
 	<body>
         <Header />
         <main transition:animate={fade({ duration: '0.2s' })} >
-	    <slot />
-            <Footer />
+            <slot />
         </main>
+        <Footer />
         <script>
             function colorMode() {
                 if (

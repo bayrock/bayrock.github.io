@@ -5,7 +5,7 @@ import '../styles/global.pcss';
 const description = "oh no!";
 ---
 <Layout pageTitle={description}>
-    <div class="lost">
+    <section class="lost">
         <Hero />
         <h1 class="lost__header brand">{description}</h1>
         <p class="grey" title="404">this place doesn't exist</p>
@@ -14,12 +14,12 @@ const description = "oh no!";
                 <button class="btn">Return home</button>
             </a>
         </p>
-    </div>
+    </section>
 </Layout>
 
 <style>
     .lost {
-        margin-top: 30%;
+        margin-top: 25%;
         text-align: center;
     }
 
