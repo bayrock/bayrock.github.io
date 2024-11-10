@@ -1,4 +1,5 @@
 ---
+import Clock from "./Clock.jsx";
 const year = new Date().getFullYear();
 ---
 <footer>
@@ -9,7 +10,7 @@ const year = new Date().getFullYear();
             <li class="icon__btn"><a class="icon__link" href="mailto: askbayrock@proton.me" title="Email"><img src="/mail.svg" class="invert-white" alt="mail"></a></li>
         </ul>
         <small>&copy; {year} | made with ❤ | <a class="accent link" href="https://github.com/bayrock/bayrock.github.io/commits/main/" title="changelog" target="_blank">changelog</a></small>
-        <br><img src="/clock.svg" class="icon__clock invert-white" alt="clock"> <small id="clock"></small> <small title="timezone" class="grey">(UTC -05:00)</small>
+        <br><img src="/clock.svg" class="icon__clock invert-white" alt="clock"> <Clock client:visible/> <small title="timezone" class="grey">(UTC -05:00)</small>
     </div>
 </footer>
 
@@ -47,25 +48,3 @@ const year = new Date().getFullYear();
     :global(.light .icon__link) { border: 2px solid black; }
     :global(.light .icon__link:hover) { border-color: var(--accent); }
 </style>
-
-<script>
-    const clock = document.getElementById('clock');
-
-    // Realtime clock logic
-    function updateClock() {
-        if (!clock) return;
-
-        const now = new Date();
-        const formattedTime = new Intl.DateTimeFormat('en-US', {
-            hour: '2-digit',
-            minute: '2-digit',
-            hour12: false,
-            timeZone: 'America/New_York'
-        }).format(now);
-        
-        clock.textContent = formattedTime;
-    }
-
-    updateClock();
-    setInterval(updateClock, 1000);
-</script>
