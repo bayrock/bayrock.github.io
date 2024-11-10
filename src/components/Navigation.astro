@@ -6,8 +6,8 @@ import ThemeIcon from './ThemeIcon.astro';
         <a href="/" class="navbar__link">bayrock.dev</a>
     </div>
     <div class="navbar__menu">
-        <a href="/projects/" class="navbar__link margin hidden" aria-label="Visit projects page">Works</a>
-        <a href="/posts/" class="navbar__link margin hidden" aria-label="Visit blog page">Posts</a>
+        <a href="/projects/" class="navbar__link hidden" aria-label="Visit projects page">Works</a>
+        <a href="/posts/" class="navbar__link hidden" aria-label="Visit blog page">Posts</a>
         <ThemeIcon />
     </div>
 </div>
@@ -40,6 +40,8 @@ import ThemeIcon from './ThemeIcon.astro';
         text-decoration-thickness: 2px;
         text-underline-offset: 6px;
     }
+
+    .navbar__menu > .navbar__link { margin: 0 10px; }
 
     :global(.light .navbar__link) { color: black; }
 

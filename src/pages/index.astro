@@ -15,8 +15,8 @@ const pageTitle = "bayrock.dev";
             We should work together! (;
         </p>
         <div class="center">
-            <a href="/projects/" aria-label="Visit projects page">
-                <button class="btn">My portfolio</button>
+            <a id="contact-btn" href="#contact" aria-label="View contact links">
+                <button class="btn">contact me</button>
             </a>
         </div>
     </section>
@@ -55,3 +55,24 @@ const pageTitle = "bayrock.dev";
         }
     }
 </style>
+
+<script>
+    const contact = document.getElementById("contact");
+    if (window.location.href.indexOf("#contact") > -1)
+        contact?.classList.add("flash");
+
+    function contactButton() {
+        const button = document.getElementById("contact-btn");
+        const contact = document.getElementById("contact");
+
+        button?.addEventListener("click", () => {
+            contact?.classList.remove("flash");
+            setTimeout(() => {
+                contact?.classList.add("flash");
+            }, 50);
+        });
+    }
+
+    contactButton();
+    document.addEventListener('astro:after-swap', contactButton);
+</script>

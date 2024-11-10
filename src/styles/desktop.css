@@ -61,7 +61,7 @@ small, li { font-family: var(--body); }
 /* Buttons */
 .btn {
     text-align: center;
-    background: rgba(0,0,0,0);
+    background: transparent;
     border: 2px solid var(--accent);
     border-radius: 8px;
     color: white;
@@ -72,7 +72,6 @@ small, li { font-family: var(--body); }
 
 .btn:hover {
     background-color: var(--accent);
-    color: white;
     cursor: pointer;
 }
 
@@ -91,7 +90,7 @@ small, li { font-family: var(--body); }
 .link { text-decoration: none; }
 .link:hover { text-decoration: underline; }
 .hidden { display: none; }
-.margin { margin: 0 10px; }
+.circle { border-radius: 50%; }
 
 .grid {
     display: grid;

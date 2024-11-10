@@ -4,10 +4,10 @@ const year = new Date().getFullYear();
 ---
 <footer>
     <div class="center">
-        <ul class="icon__list">
-            <li class="icon__btn"><a class="icon__link" href="https://github.com/bayrock" title="GitHub" target="_blank"><img src="/github.svg" class="invert-white" alt="gh"></a></li>
-            <li class="icon__btn"><a class="icon__link" href="https://discordapp.com/users/276359151037448192" title="Discord" target="_blank"><img src="/discord.svg" class="invert-white" alt="dc"></a></li>
-            <li class="icon__btn"><a class="icon__link" href="mailto: askbayrock@proton.me" title="Email"><img src="/mail.svg" class="invert-white" alt="mail"></a></li>
+        <ul id="contact" class="icon__list">
+            <li class="icon__btn"><a class="icon__link circle" href="https://github.com/bayrock" title="GitHub" target="_blank"><img src="/github.svg" class="invert-white" alt="gh"></a></li>
+            <li class="icon__btn"><a class="icon__link circle" href="https://discordapp.com/users/276359151037448192" title="Discord" target="_blank"><img src="/discord.svg" class="invert-white" alt="dc"></a></li>
+            <li class="icon__btn"><a class="icon__link circle" href="mailto: askbayrock@proton.me" title="Email"><img src="/mail.svg" class="invert-white" alt="mail"></a></li>
         </ul>
         <small>&copy; {year} | made with ❤ | <a class="accent link" href="https://github.com/bayrock/bayrock.github.io/commits/main/" title="changelog" target="_blank">changelog</a></small>
         <br><img src="/clock.svg" class="icon__clock invert-white" alt="clock"> <Clock client:visible/> <small title="timezone" class="grey">(UTC -05:00)</small>
@@ -15,12 +15,17 @@ const year = new Date().getFullYear();
 </footer>
 
 <style>
-    footer { margin: 4rem 0; }
+    footer { margin: 3.5rem 0; }
+
+    #contact:target { border: 2px dotted var(--accent); }
 
     .icon__list {
+        max-width: fit-content;
         cursor: default;
         list-style: none;
-        padding: 0;
+        border-radius: 8px;
+        padding: 8px 16px;
+        margin: 8px auto;
     }
 
     .icon__btn {
@@ -33,7 +38,6 @@ const year = new Date().getFullYear();
         padding: 10px;
         height: 20px;
         width: 20px;
-        border-radius: 50%;
         border: 2px solid var(--pink);
     }
 
