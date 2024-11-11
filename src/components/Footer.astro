@@ -1,5 +1,4 @@
 ---
-import Clock from "./Clock.jsx";
 const year = new Date().getFullYear();
 ---
 <footer>
@@ -52,7 +51,8 @@ const year = new Date().getFullYear();
     // Realtime clock logic
     function updateClock() {
         const clock = document.getElementById('clock');
-
+        if (!clock) return;
+    
         const now = new Date();
         const formattedTime = new Intl.DateTimeFormat('en-US', {
             hour: '2-digit',
