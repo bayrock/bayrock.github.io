@@ -4,10 +4,10 @@ description: 'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, co
 image:
     url: '/projects/thumbnail.webp'
     alt: 'GitHub wallpaper'
-worksImage1:
+projImage1:
     url: '/projects/project-1.webp'
     alt: 'first image of your project.'
-worksImage2:
+projImage2:
     url: '/projects/project-2.webp'
     alt: 'second image of your project.'
 platform: Web

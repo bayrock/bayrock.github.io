@@ -1,0 +1,56 @@
+---
+import ArticleLayout from './ArticleLayout.astro';
+const { frontmatter } = Astro.props;
+---
+<ArticleLayout pageTitle={frontmatter.title}>
+    <slot />
+    <ul class="badge__list">
+        <li><span class="badge badge--item">PLATFORM</span> {frontmatter.platform}</li>
+        <li><span class="badge badge--item">STACK</span> {frontmatter.stack}</li>
+        <li>
+            <span class="badge badge--item">WEBSITE</span>
+            <a class="accent link" href={frontmatter.website} aria-label=`Visit ${frontmatter.title} site` target="_blank">{frontmatter.website}</a>
+        </li>
+        <li>
+            <span class="badge badge--item">GITHUB</span>
+            <a class="accent link" href={frontmatter.github} aria-label=`Visit ${frontmatter.title} repo` target="_blank">{frontmatter.github}</a>
+        </li>
+    </ul>
+    <div class="center">
+        <img class="project-img" width="500px" height="281" src={frontmatter.projImage1.url} alt={frontmatter.projImage1.alt} />
+        <img class="project-img" width="500px" height="281" src={frontmatter.projImage2.url} alt={frontmatter.projImage2.alt} />
+    </div>
+</ArticleLayout>
+
+<style>
+    .project-img {
+        border-radius: 16px;
+        margin-top: 10px;
+    }
+    .badge__list {
+        text-indent: 1rem;
+        list-style: none;
+        padding: 0;
+    }
+
+    .badge__list > li { margin-top: 10px; }
+
+    .badge--item {
+        border-radius: 4px;
+        font-size: 0.7rem;
+        margin-right: 5px;
+        padding: 0.5em 0.3em 0.3em 0.3em;
+    }
+
+    @media only screen and (max-width: 600px) {
+        .badge__list {
+            font-size: 0.9rem;
+            text-indent: 0;
+        }
+
+        .project-img {
+            height: auto;
+            width: 350px;
+        }
+    }
+</style>
