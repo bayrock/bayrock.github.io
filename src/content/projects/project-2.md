@@ -1,15 +1,15 @@
 ---
 title: 'Project 2'
-description: 'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci'
+description: 'Coming soon!'
 image:
     url: '/projects/thumbnail.webp'
     alt: 'GitHub wallpaper'
 projImage1:
     url: '/projects/project-1.webp'
-    alt: 'first image of your project.'
+    alt: 'first image of project.'
 projImage2:
     url: '/projects/project-2.webp'
-    alt: 'second image of your project.'
+    alt: 'second image of project.'
 platform: Web
 stack: Astro, JavaScript
 website: https://bayrock.github.io

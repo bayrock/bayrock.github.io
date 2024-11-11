@@ -5,8 +5,8 @@ const { frontmatter } = Astro.props;
 <ArticleLayout pageTitle={frontmatter.title}>
     <slot />
     <ul class="badge__list">
-        <li><span class="badge badge--item">PLATFORM</span> {frontmatter.platform}</li>
-        <li><span class="badge badge--item">STACK</span> {frontmatter.stack}</li>
+        <li><span class="badge badge--item">PLATFORM</span>{frontmatter.platform}</li>
+        <li><span class="badge badge--item">STACK</span>{frontmatter.stack}</li>
         <li>
             <span class="badge badge--item">WEBSITE</span>
             <a class="accent link" href={frontmatter.website} aria-label=`Visit ${frontmatter.title} site` target="_blank">{frontmatter.website}</a>

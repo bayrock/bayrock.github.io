@@ -1,7 +1,9 @@
 ---
+import { getCollection } from "astro:content";
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
 import Hero from '../components/Hero.astro';
+const allPosts = await getCollection("blog");
 const pageTitle = "Blog";
 ---
 <Layout pageTitle={pageTitle}>
@@ -9,18 +11,12 @@ const pageTitle = "Blog";
     <section>
         <h2>Blog</h2>
         <ul role="list" class="grid">
-            <Card
-                url="#"
-                image="/projects/thumbnail.webp"
-                title="Post 1"
-                desc="Coming soon!"
-            />
-            <Card
-                url="#"
-                image="/projects/thumbnail.webp"
-                title="Post 2"
-                desc="Coming soon!"
-            />
+            {allPosts.map((post) => <Card 
+                url={`/blog/${post.slug}/`} 
+                image={post.data.image.url} 
+                title={post.data.title} 
+                desc={post.data.description}
+            />)}
         </ul>
     </section>
 </Layout>

@@ -11,11 +11,11 @@ const pageTitle = "Projects";
     <section>
         <h2>Projects</h2>
         <ul role="list" class="grid">
-            {allProjects.map((card) => <Card 
-                url={`/projects/${card.slug}/`} 
-                image={card.data.image.url} 
-                title={card.data.title} 
-                body={card.data.description}
+            {allProjects.map((project) => <Card 
+                url={`/projects/${project.slug}/`} 
+                image={project.data.image.url} 
+                title={project.data.title}
+                desc={project.data.description}
             />)}
         </ul>
     </section>
