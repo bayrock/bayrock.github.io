@@ -1,4 +1,4 @@
-/* Global */
+/* Global (Dark) */
 :root {
     --brand: #ff6671;
     --accent: #78c2ad;
@@ -91,6 +91,13 @@ small, li { font-family: var(--body); }
 .link:hover { text-decoration: underline; }
 .hidden { display: none; }
 .circle { border-radius: 50%; }
+
+.dotted {
+    color: white;
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-decoration-thickness: 2px;
+}
 
 .grid {
     display: grid;

@@ -11,3 +11,4 @@ html.light {
 /* Helpers */
 .light .invert-white { filter: invert(100%); }
 .light .invert-black { filter: invert(0%); }
+.light .dotted { color: black; }
