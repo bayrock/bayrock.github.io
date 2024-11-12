@@ -12,7 +12,7 @@ const pageTitle = "Projects";
         <h2>Projects</h2>
         <ul role="list" class="grid">
             {allProjects.map((project) => <Card 
-                url={`/projects/${project.slug}/`} 
+                url={`/projects/${project.slug}`} 
                 image={project.data.image.url} 
                 title={project.data.title}
                 desc={project.data.description}

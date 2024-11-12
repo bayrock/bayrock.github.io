@@ -1,12 +1,15 @@
 ---
 import BaseLayout from './Layout.astro';
 import Hero from '../components/Hero.astro';
-const { pageTitle } = Astro.props;
+const { frontmatter } = Astro.props;
 ---
-<BaseLayout pageTitle={pageTitle}>
+<BaseLayout pageTitle={frontmatter.title}>
     <Hero />
     <article>
-        <h2>{pageTitle}</h2>
+        <h2>{frontmatter.title}</h2>
         <slot />
+        <small>
+            <a class="accent link right" href={frontmatter?.backlink || "/"}>{frontmatter?.backlink || "/home"}</a>
+        </small>
     </article>
 </BaseLayout>

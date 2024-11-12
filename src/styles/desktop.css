@@ -47,6 +47,8 @@ p {
 
 small, li { font-family: var(--body); }
 
+a { cursor: pointer; }
+
 /* Badges */
 .badge {
     background-color: #584966;
@@ -85,6 +87,7 @@ small, li { font-family: var(--body); }
 
  /* Helpers */
 .center { text-align: center; }
+.right { float: right; }
 .invert-white { filter: invert(0%); }
 .invert-black { filter: invert(100%); }
 .link { text-decoration: none; }

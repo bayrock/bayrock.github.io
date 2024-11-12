@@ -8,7 +8,7 @@ const year = new Date().getFullYear();
             <li class="icon__btn"><a class="icon__link circle" href="https://discord.com/users/276359151037448192" title="Discord" target="_blank"><img src="/icons/discord.svg" class="invert-white" alt="dc"></a></li>
             <li class="icon__btn"><a class="icon__link circle" href="mailto: askbayrock@proton.me" title="Email"><img src="/icons/mail.svg" class="invert-white" alt="mail"></a></li>
         </ul>
-        <small>&copy; {year} | made with ❤ | <a class="accent link" href="https://github.com/bayrock/bayrock.github.io/commits/main/" title="changelog" target="_blank">changelog</a></small>
+        <small>&copy; {year} | made with ❤ | <a class="accent link" href="https://github.com/bayrock/bayrock.github.io/commits/main" title="changelog" target="_blank">changelog</a></small>
         <br><img src="/icons/clock.svg" class="icon__clock invert-white" alt="clock"> <small id="clock"><slot>00:00</slot></small> <small title="timezone" class="grey">(UTC -05:00)</small>
     </div>
 </footer>
@@ -20,7 +20,6 @@ const year = new Date().getFullYear();
 
     .icon__list {
         max-width: fit-content;
-        cursor: default;
         list-style: none;
         border-radius: 8px;
         padding: 8px 16px;
