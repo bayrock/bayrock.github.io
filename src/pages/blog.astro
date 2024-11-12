@@ -8,9 +8,9 @@ const pageTitle = "/blog";
 ---
 <Layout pageTitle={pageTitle}>
     <Hero />
-    <section>
+    <section id="list">
         <h2>{pageTitle}</h2>
-        <ul role="list" id="list" class="grid">
+        <ul role="list" class="grid">
             {allPosts.map((post) => <Card 
                 url={`/blog/${post.slug}`} 
                 image={post.data.image.url} 
