@@ -4,7 +4,7 @@ import '../styles/global.pcss';
 const description = "oh no!";
 ---
 <Layout pageTitle={description}>
-    <section id="lost">
+    <section id="lost" class="center">
         <h1 class="lost__header brand">{description}</h1>
         <p class="grey" title="404">this place doesn't exist</p>
         <p>
@@ -16,11 +16,6 @@ const description = "oh no!";
 </Layout>
 
 <style>
-    #lost {
-        margin-top: 25%;
-        text-align: center;
-    }
-
     .lost__header {
         margin: 10px auto;
         text-align: center;
