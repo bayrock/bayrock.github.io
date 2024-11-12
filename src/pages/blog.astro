@@ -4,12 +4,12 @@ import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
 import Hero from '../components/Hero.astro';
 const allPosts = await getCollection("blog");
-const pageTitle = "Blog";
+const pageTitle = "/blog";
 ---
 <Layout pageTitle={pageTitle}>
     <Hero />
     <section>
-        <h2>Blog</h2>
+        <h2>{pageTitle}</h2>
         <ul role="list" class="grid">
             {allPosts.map((post) => <Card 
                 url={`/blog/${post.slug}`} 
