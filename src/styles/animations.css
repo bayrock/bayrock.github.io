@@ -4,4 +4,4 @@
     50% { background-color: var(--accent); }
 }
 
-.flash { animation: flash 0.8s linear; }
+.flash, .dotted:target, .grid:target { animation: flash 0.8s linear; }

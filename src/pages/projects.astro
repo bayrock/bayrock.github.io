@@ -10,7 +10,7 @@ const pageTitle = "/projects";
     <Hero />
     <section>
         <h2>{pageTitle}</h2>
-        <ul role="list" class="grid">
+        <ul role="list" id="list" class="grid">
             {allProjects.map((project) => <Card 
                 url={`/projects/${project.slug}`} 
                 image={project.data.image.url} 

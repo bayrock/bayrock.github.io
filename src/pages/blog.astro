@@ -10,7 +10,7 @@ const pageTitle = "/blog";
     <Hero />
     <section>
         <h2>{pageTitle}</h2>
-        <ul role="list" class="grid">
+        <ul role="list" id="list" class="grid">
             {allPosts.map((post) => <Card 
                 url={`/blog/${post.slug}`} 
                 image={post.data.image.url} 

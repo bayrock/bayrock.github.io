@@ -12,7 +12,7 @@ const { frontmatter } = Astro.props;
             {frontmatter.citation && <span>
                 src: <a class="accent link" href={frontmatter.citation.url} target="_blank">{frontmatter.citation.name}</a>
             </span>}
-            <a class="accent link right" href={frontmatter?.backlink || "/"}>{frontmatter?.backlink || "/home"}</a>
+            <a class="accent link right" href={frontmatter.backlink?.url || "/"}>{frontmatter.backlink?.name || "/home"}</a>
         </small>
     </article>
 </BaseLayout>
