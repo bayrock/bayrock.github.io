@@ -5,7 +5,7 @@ image:
     url: '/projects/thumbnail.webp'
     alt: 'GitHub wallpaper'
 backlink:
-    url: '/blog#list'
+    url: '/blog/#list'
     name: '/blog'
 ---
 

@@ -4,7 +4,7 @@ citation:
     url: 'https://en.wikipedia.org/wiki/Sex_assignment#AMAB'
     name: 'wikipedia'
 backlink:
-    url: '/blurb/transfeminine#amab'
+    url: '/blurb/transfeminine/#amab'
     name: '/transfeminine'
 ---
 
