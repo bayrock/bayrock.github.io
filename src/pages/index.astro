@@ -58,7 +58,7 @@ const pageTitle = "bayrock.dev";
 
 <script>
     const contact = document.getElementById("contact");
-    if (window.location.href.indexOf("#contact") > -1)
+    if (window.location.hash == "#contact")
         contact?.classList.add("flash");
 
     function contactButton() {
