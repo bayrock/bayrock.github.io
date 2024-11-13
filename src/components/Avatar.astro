@@ -1,7 +1,11 @@
 ---
 import githubID from '../../ghid.mjs';
+const avatar = `https://avatars.githubusercontent.com/u/${githubID}?v=4&s=230`
 ---
-<img alt="profile picture" src=`https://avatars.githubusercontent.com/u/${githubID}?v=4` class="pfp circle"/>
+<picture>
+    <source srcset={avatar} type="image/webp">
+    <img src={avatar} alt="profile picture" class="pfp circle" loading="lazy">
+</picture>
 
 <style>
     .pfp { max-width: 150px; }
