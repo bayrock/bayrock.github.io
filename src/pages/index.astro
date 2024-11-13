@@ -1,13 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Button from '../components/Button.astro';
-const pageTitle = "bayrock.dev";
+const title = "bayrock.dev";
+const description = "I'm a fullstack developer, designer and consultant w/ an extensive background and passion in technology."
 ---
-<Layout pageTitle={pageTitle}>
+<Layout title={title} description={description}>
     <section id="about">
         <h2>About</h2>
         <p>
-            I'm a fullstack developer, designer and consultant w/ an extensive background and passion in technology.
+            {description}
         </p>
         <p>
             I strive to design, build and deploy <a id="projects" class=" dotted" href="/projects">projects</a> and services stylishly and efficiently whilst remaining true to my humble hobbyist roots.

@@ -2,6 +2,6 @@
 import { getCollection } from "astro:content";
 import CardList from '../layouts/CardListLayout.astro';
 const allPosts = await getCollection("blog");
-const pageTitle = "/blog";
+const title = "/blog";
 ---
-<CardList pageTitle={pageTitle} collection={allPosts} />
+<CardList title={title} collection={allPosts} />

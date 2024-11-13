@@ -2,11 +2,11 @@
 import Layout from '../layouts/Layout.astro';
 import Button from '../components/Button.astro';
 import '../styles/global.pcss';
-const description = "oh no!";
+const title = "oh no!";
 ---
-<Layout pageTitle={description}>
+<Layout title={title}>
     <section id="lost" class="center">
-        <h1 class="lost__header brand">{description}</h1>
+        <h1 class="lost__header brand">{title}</h1>
         <p class="grey" title="404">this place doesn't exist</p>
         <p>
             <Button url="/" label="Return to homepage">return home</Button>

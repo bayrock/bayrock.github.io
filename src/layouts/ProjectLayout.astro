@@ -1,8 +1,8 @@
 ---
 import ArticleLayout from './ArticleLayout.astro';
-const { frontmatter } = Astro.props;
+const { frontmatter, description } = Astro.props;
 ---
-<ArticleLayout frontmatter={frontmatter}>
+<ArticleLayout frontmatter={frontmatter}, description={description}>
     <slot />
     <ul class="badge__list">
         <li><span class="badge badge--item">PLATFORM</span> {frontmatter.platform}</li>

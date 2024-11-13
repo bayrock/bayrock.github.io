@@ -2,6 +2,6 @@
 import { getCollection } from "astro:content";
 import CardList from '../layouts/CardListLayout.astro';
 const allProjects = await getCollection("projects");
-const pageTitle = "/projects";
+const title = "/projects";
 ---
-<CardList pageTitle={pageTitle} collection={allProjects} />
+<CardList title={title} collection={allProjects} />

@@ -1,8 +1,8 @@
 ---
-import BaseLayout from './Layout.astro';
-const { frontmatter } = Astro.props;
+import Layout from './Layout.astro';
+const { frontmatter, description } = Astro.props;
 ---
-<BaseLayout pageTitle={frontmatter.title}>
+<Layout title={frontmatter.title} description={description}>
     <article>
         <h2>{frontmatter.title}</h2>
         <slot />
@@ -13,4 +13,4 @@ const { frontmatter } = Astro.props;
             <a class="accent link right" href={frontmatter.backlink?.url || "/"}>{frontmatter.backlink?.name || "/home"}</a>
         </small>
     </article>
-</BaseLayout>
+</Layout>

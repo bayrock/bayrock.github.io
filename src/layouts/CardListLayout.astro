@@ -1,14 +1,15 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
-const { pageTitle, collection } = Astro.props;
+const { title, collection } = Astro.props;
+const description = `bayrock's ${title.replace("/", "")}`
 ---
-<Layout pageTitle={pageTitle}>
+<Layout title={title} description={description}>
     <section id="list">
-        <h2>{pageTitle}</h2>
+        <h2>{title}</h2>
         <ul role="list" class="grid">
             {collection.map((entry) => <Card 
-                url={`${pageTitle}/${entry.slug}`} 
+                url={`${title}/${entry.slug}`} 
                 image={entry.data.image.url} 
                 title={entry.data.title}
                 desc={entry.data.description}
