@@ -1,0 +1,27 @@
+---
+const { url, label } = Astro.props;
+---
+<a id="call-to-action" href={url} aria-label={label}>
+    <button class="btn"><slot /></button>
+</a>
+
+<style>
+    .btn {
+        text-align: center;
+        background: transparent;
+        border: 2px solid var(--accent);
+        border-radius: 8px;
+        color: white;
+        font: 600 16px var(--body);
+        padding: 8px 16px;
+        transition: background-color 0.4s, color 0.4s;
+    }
+
+    .btn:hover {
+        background-color: var(--accent);
+        cursor: pointer;
+    }
+
+    :global(.light .btn) { color: black; }
+    :global(.light .btn:hover) { color: black; }
+</style>

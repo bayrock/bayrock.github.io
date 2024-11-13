@@ -60,23 +60,6 @@ a { cursor: pointer; }
     padding: 0.3em 0.6em 0.2em;
 }
 
-/* Buttons */
-.btn {
-    text-align: center;
-    background: transparent;
-    border: 2px solid var(--accent);
-    border-radius: 8px;
-    color: white;
-    font: 600 16px var(--body);
-    padding: 8px 16px;
-    transition: background-color 0.4s, color 0.4s;
-}
-
-.btn:hover {
-    background-color: var(--accent);
-    cursor: pointer;
-}
-
 /* Colors */
 .white { color: white; }
 .grey { color: grey; }

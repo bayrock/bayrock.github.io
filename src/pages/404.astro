@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Button from '../components/Button.astro';
 import '../styles/global.pcss';
 const description = "oh no!";
 ---
@@ -8,9 +9,7 @@ const description = "oh no!";
         <h1 class="lost__header brand">{description}</h1>
         <p class="grey" title="404">this place doesn't exist</p>
         <p>
-            <a href="/" aria-label="Return to homepage">
-                <button class="btn">return home</button>
-            </a>
+            <Button url="/" label="Return to homepage">return home</Button>
         </p>
     </section>
 </Layout>

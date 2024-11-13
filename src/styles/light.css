@@ -4,10 +4,6 @@ html.light {
     color: black;
 }
 
-/* Buttons */
-.light .btn { color: black; }
-.light .btn:hover { color: black; }
-
 /* Helpers */
 .light .invert-white { filter: invert(100%); }
 .light .invert-black { filter: invert(0%); }

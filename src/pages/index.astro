@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Button from '../components/Button.astro';
 const pageTitle = "bayrock.dev";
 ---
 <Layout pageTitle={pageTitle}>
@@ -13,9 +14,7 @@ const pageTitle = "bayrock.dev";
             We should work together! (;
         </p>
         <div class="center">
-            <a id="contact-btn" href="#contact" aria-label="View contact links">
-                <button class="btn">contact me</button>
-            </a>
+            <Button url="#contact" label="View contact links">contact me</Button>
         </div>
     </section>
     <section id="skills">
@@ -61,7 +60,7 @@ const pageTitle = "bayrock.dev";
         contact?.classList.add("flash");
 
     function contactButton() {
-        const button = document.getElementById("contact-btn");
+        const button = document.getElementById("call-to-action");
         const contact = document.getElementById("contact");
 
         button?.addEventListener("click", () => {
