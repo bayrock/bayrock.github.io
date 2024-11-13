@@ -1,20 +1,7 @@
 ---
 import { getCollection } from "astro:content";
-import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
+import CardList from '../layouts/CardListLayout.astro';
 const allProjects = await getCollection("projects");
 const pageTitle = "/projects";
 ---
-<Layout pageTitle={pageTitle}>
-    <section id="list">
-        <h2>{pageTitle}</h2>
-        <ul role="list" class="grid">
-            {allProjects.map((project) => <Card 
-                url={`/projects/${project.slug}`} 
-                image={project.data.image.url} 
-                title={project.data.title}
-                desc={project.data.description}
-            />)}
-        </ul>
-    </section>
-</Layout>
+<CardList pageTitle={pageTitle} collection={allProjects} />
