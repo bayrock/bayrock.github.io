@@ -1,0 +1,20 @@
+---
+import ArticleLayout from '../layouts/ArticleLayout.astro';
+import TypingStats from "../components/TypingStats.astro";
+const description = "bayrock's keyboard & typing stats";
+const frontmatter = {
+    title: 'keyboard',
+    citation: {
+        url: 'https://monkeytype.com/profile/bayrock',
+        name: 'monkeytype'
+    },
+    backlink: {
+        url: '/#typing',
+        name: '/home'
+    }
+}
+---
+
+<ArticleLayout frontmatter={frontmatter}, description={description}>
+    <TypingStats />
+</ArticleLayout>

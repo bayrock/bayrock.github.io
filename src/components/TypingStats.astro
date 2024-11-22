@@ -1,0 +1,84 @@
+---
+const model = "Glorious GMMK"
+const switches = "Gateron Brown"
+const layout = "Canary"
+---
+<section id="specs" class="flex">
+    <img src="/icons/glorious.svg" alt="model"> <span class="flex column">Model <small class="grey">{model}</small></span><hr>
+    <img class="invert-white" src="/icons/switch.svg" alt="switch"> <span class="flex column">Switch <small class="grey">{switches}</small></span><hr>
+    <img class="invert-white" src="/icons/keyboard.svg" alt="layout"> <span class="flex column">Layout <small class="grey">{layout}</small></span>
+</section>
+<section id="details" class="flex" style="justify-content: space-between;">
+    <section id="statistics">
+        <h2>statistics</h2>
+        <ul class="badge__list">
+            <li>Passed <b><span id="passed">0000</span></b> tests <span class="accent">✔</span></li>
+            <li>Failed <b><span id="failed">00000</span></b> tests <span class="brand">𝐱</span></li>
+            <li>Typed <b><span id="time">00</span></b> hours <span class="grey">⏰</span></li>
+        </ul>
+    </section>
+    <section id="speed">
+        <h2>speed</h2>
+        <ul class="badge__list">
+            <li><span class="badge badge--item">QWERTY</span> <b><span id="qwerty">000</span></b> wpm <span class="grey">⌨</span></li>
+            <li><span class="badge badge--item">Canary</span> <b><span id="canary">00</span></b> wpm <span class="grey">⌨</span></li>
+        </ul>
+    </section>
+</section>
+
+<style>
+    #specs {
+        font-family: var(--body);
+        padding-top: 15px;
+        align-self: center;
+    }
+
+    .flex > img { padding: 0 12px; }
+
+    @media only screen and (max-width: 600px) {
+        hr { margin-left: 12px; }
+    }
+</style>
+
+<script>
+    function secondsToHours(seconds: number) { return seconds / 3600; }
+    
+    async function getMonkeyData(monkeytypeID: string) {
+        const url = `https://api.monkeytype.com/users/${monkeytypeID}/profile?isUid`;
+        try {
+            const response = await fetch(url);
+
+            if (!response.ok)
+                throw new Error(`Error: ${response.status} - ${response.statusText}`);
+
+            return await response.json();
+        } catch (error: any) {
+            console.error(error);
+        }
+    }
+
+    async function updateData() {
+        // Get main data
+        const main = await getMonkeyData("wwezGtenkPeTFJTioEK0KZcXWXq1");
+        const passed = document.getElementById("passed");
+        const failed = document.getElementById("failed");
+        const time = document.getElementById("time");
+        const qwerty = document.getElementById("qwerty");
+
+        // Set main data
+        if (passed) passed.innerHTML = main.data.typingStats.completedTests;
+        if (failed) failed.innerHTML = main.data.typingStats.startedTests - main.data.typingStats.completedTests;
+        if (time) time.innerHTML = Math.ceil(secondsToHours(main.data.typingStats.timeTyping));
+        if (qwerty) qwerty.innerHTML = Math.ceil(main.data.personalBests.words[10][0].wpm);
+
+        // Get alt data
+        const alt = await getMonkeyData("129CxSj68DhL8PbgNBxazC8oOa73");
+        const canary = document.getElementById("canary");
+
+        // Set alt data
+        if (canary) canary.innerHTML = Math.ceil(alt.data.personalBests.words[10][0].wpm);
+    }
+
+    updateData();
+    document.addEventListener('astro:after-swap', updateData);
+</script>
