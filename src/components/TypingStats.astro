@@ -12,9 +12,9 @@ const layout = "Canary"
     <section id="statistics">
         <h2>statistics</h2>
         <ul class="badge__list">
-            <li>Passed <b><span id="passed">0000</span></b> tests <span class="accent">✔</span></li>
-            <li>Failed <b><span id="failed">00000</span></b> tests <span class="brand">𝐱</span></li>
-            <li>Typed <b><span id="time">00</span></b> hours <span class="grey">⏰</span></li>
+            <li>Passed <b><span id="passedElement">0000</span></b> tests <span class="accent">✔</span></li>
+            <li>Failed <b><span id="failedElement">00000</span></b> tests <span class="brand">𝐱</span></li>
+            <li>Typed <b><span id="timeElement">00</span></b> hours <span class="grey">⏰</span></li>
         </ul>
     </section>
     <section id="speed">
@@ -43,10 +43,9 @@ const layout = "Canary"
 <script>
     function secondsToHours(seconds: number) { return seconds / 3600; }
     
-    async function getMonkeyData(monkeytypeID: string) {
-        const url = `https://api.monkeytype.com/users/${monkeytypeID}/profile?isUid`;
+    async function getMonkeyData() {
         try {
-            const response = await fetch(url);
+            const response = await fetch("https://apibayrockdev.vercel.app/monkeytype.json");
 
             if (!response.ok)
                 throw new Error(`Error: ${response.status} - ${response.statusText}`);
@@ -58,25 +57,27 @@ const layout = "Canary"
     }
 
     async function updateData() {
-        // Get main data
-        const main = await getMonkeyData("wwezGtenkPeTFJTioEK0KZcXWXq1");
-        const passed = document.getElementById("passed");
-        const failed = document.getElementById("failed");
-        const time = document.getElementById("time");
-        const qwerty = document.getElementById("qwerty");
+        // Get data
+        const { qwerty, canary } = await getMonkeyData();
+        const completedTests = qwerty.stats.completedTests + canary.stats.completedTests;
+        const failedTests = (qwerty.stats.startedTests + canary.stats.startedTests) - completedTests;
+        const timeTyping = Math.ceil(secondsToHours(qwerty.stats.timeTyping + canary.stats.timeTyping));
+        const qwertyWPM = Math.ceil(qwerty.bests.words[10][0].wpm);
+        const canaryWPM = Math.ceil(canary.bests.words[10][0].wpm);
 
-        // Set main data
-        if (passed) passed.innerHTML = main.data.typingStats.completedTests;
-        if (failed) failed.innerHTML = main.data.typingStats.startedTests - main.data.typingStats.completedTests;
-        if (time) time.innerHTML = Math.ceil(secondsToHours(main.data.typingStats.timeTyping));
-        if (qwerty) qwerty.innerHTML = Math.ceil(main.data.personalBests.words[10][0].wpm);
-
-        // Get alt data
-        const alt = await getMonkeyData("129CxSj68DhL8PbgNBxazC8oOa73");
-        const canary = document.getElementById("canary");
-
-        // Set alt data
-        if (canary) canary.innerHTML = Math.ceil(alt.data.personalBests.words[10][0].wpm);
+        // Get elements
+        const passedElement = document.getElementById("passedElement");
+        const failedElement = document.getElementById("failedElement");
+        const timeElement = document.getElementById("timeElement");
+        const qwertyElement = document.getElementById("qwerty");
+        const canaryElement = document.getElementById("canary");
+        
+        // Set data to elements
+        if (passedElement) passedElement.innerHTML = completedTests;
+        if (failedElement) failedElement.innerHTML = failedTests;
+        if (timeElement) timeElement.innerHTML = timeTyping;
+        if (qwertyElement) qwertyElement.innerHTML = qwertyWPM;
+        if (canaryElement) canaryElement.innerHTML = canaryWPM;
     }
 
     updateData();
