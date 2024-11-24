@@ -1,0 +1,7 @@
+/* 4k */
+@media (min-width: 2560px) {
+    body {
+      transform: scale(2) translate(-25%);
+      transform-origin: top left;
+    }
+}
