@@ -41,8 +41,9 @@ const layout = "Canary"
 </style>
 
 <script>
-    function secondsToHours(seconds: number) { return seconds / 3600; }
-    
+    import { secondsToHours, millisecondsToSeconds } from "../modules/getTimeConversion";
+    import getTimeString from "../modules/getTimeString";
+
     async function getMonkeyData() {
         try {
             const response = await fetch("https://api.bayrock.dev/monkeytype.json");
@@ -58,24 +59,27 @@ const layout = "Canary"
 
     async function updateData() {
         // Get data
-        const { qwerty, canary } = await getMonkeyData();
+        const { qwerty, canary, updated } = await getMonkeyData();
         const completedTests = qwerty.stats.completedTests + canary.stats.completedTests;
         const failedTests = (qwerty.stats.startedTests + canary.stats.startedTests) - completedTests;
         const timeTyping = Math.ceil(secondsToHours(qwerty.stats.timeTyping + canary.stats.timeTyping));
         const qwertyWPM = Math.ceil(qwerty.bests.words[10][0].wpm);
         const canaryWPM = Math.ceil(canary.bests.words[10][0].wpm);
-
+        const lastUpdated = getTimeString(Math.ceil(millisecondsToSeconds(Date.now()) - updated));
+        
         // Get elements
         const passedElement = document.getElementById("passedElement");
         const failedElement = document.getElementById("failedElement");
         const timeElement = document.getElementById("timeElement");
+        const updatedElement = document.getElementById("updatedElement");
         const qwertyElement = document.getElementById("qwerty");
         const canaryElement = document.getElementById("canary");
-        
+
         // Set data to elements
         if (passedElement) passedElement.innerHTML = completedTests;
         if (failedElement) failedElement.innerHTML = failedTests;
         if (timeElement) timeElement.innerHTML = timeTyping;
+        if (updatedElement) updatedElement.innerHTML = lastUpdated;
         if (qwertyElement) qwertyElement.innerHTML = qwertyWPM;
         if (canaryElement) canaryElement.innerHTML = canaryWPM;
     }
