@@ -45,7 +45,7 @@ const layout = "Canary"
     
     async function getMonkeyData() {
         try {
-            const response = await fetch("https://apibayrockdev.vercel.app/monkeytype.json");
+            const response = await fetch("https://api.bayrock.dev/monkeytype.json");
 
             if (!response.ok)
                 throw new Error(`Error: ${response.status} - ${response.statusText}`);
