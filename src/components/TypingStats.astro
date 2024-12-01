@@ -71,7 +71,7 @@ const layout = "Canary"
         const passedElement = document.getElementById("passedElement");
         const failedElement = document.getElementById("failedElement");
         const timeElement = document.getElementById("timeElement");
-        const updatedElement = document.getElementById("updatedElement");
+        const timestampElement = document.getElementById("timestampElement");
         const qwertyElement = document.getElementById("qwerty");
         const canaryElement = document.getElementById("canary");
 
@@ -79,7 +79,7 @@ const layout = "Canary"
         if (passedElement) passedElement.innerHTML = completedTests;
         if (failedElement) failedElement.innerHTML = failedTests;
         if (timeElement) timeElement.innerHTML = timeTyping;
-        if (updatedElement) updatedElement.innerHTML = lastUpdated;
+        if (timestampElement) timestampElement.innerHTML = lastUpdated;
         if (qwertyElement) qwertyElement.innerHTML = qwertyWPM;
         if (canaryElement) canaryElement.innerHTML = canaryWPM;
     }

@@ -12,8 +12,8 @@ const { frontmatter, description } = Astro.props;
             </span>}
             <a class="accent link right" href={frontmatter.backlink?.url || "/"}>{frontmatter.backlink?.name || "/home"}</a>
         </small><br>
-        {frontmatter.timestamp && <small class="grey center">
-            updated: <span id="updatedElement">{frontmatter.timestamp}</span>
+        {frontmatter.timestamp && <small class="grey">
+            updated: <span id="timestampElement">{frontmatter.timestamp}</span>
         </small>}
     </article>
 </Layout>
