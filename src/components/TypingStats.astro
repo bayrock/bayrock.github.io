@@ -52,7 +52,7 @@ const layout = "Canary"
                 throw new Error(`Error: ${response.status} - ${response.statusText}`);
 
             return await response.json();
-        } catch (error: any) {
+        } catch (error) {
             console.error(error);
         }
     }
