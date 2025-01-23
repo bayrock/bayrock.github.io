@@ -4,4 +4,7 @@
     50% { background-color: var(--accent); }
 }
 
-.flash, .dotted:target, section:target { animation: flash 0.8s linear; }
+.flash, .dotted:target, section:target, h2:target { 
+    animation: flash 0.8s linear;
+    width: fit-content;
+}

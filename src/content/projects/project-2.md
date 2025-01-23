@@ -15,7 +15,7 @@ stack: Astro, JavaScript
 website: https://bayrock.github.io
 github: https://github.com/bayrock
 backlink:
-    url: '/projects/#list'
+    url: '/projects/#heading'
     name: '/projects'
 ---
 
