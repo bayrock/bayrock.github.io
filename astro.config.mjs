@@ -7,6 +7,6 @@ export default defineConfig({
     port: 80
   },
   redirects: {
-    '/home': '/'
+    '/home': '/#home'
   }
 });

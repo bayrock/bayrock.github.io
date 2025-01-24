@@ -4,13 +4,13 @@ const { frontmatter, description } = Astro.props;
 ---
 <Layout title={frontmatter.title} description={description}>
     <article>
-        <h2>{frontmatter.title}</h2>
+        <h2 id="heading">{frontmatter.title}</h2>
             <slot />
         <small>
             {frontmatter.citation && <span>
                 src: <a class="accent link" href={frontmatter.citation.url} target="_blank">{frontmatter.citation.name}</a>
             </span>}
-            <a class="accent link right" href={frontmatter.backlink?.url || "/"}>{frontmatter.backlink?.name || "/home"}</a>
+            <a class="accent link right" href={frontmatter.backlink?.url || "/#home"}>{frontmatter.backlink?.name || "/home"}</a>
         </small><br>
         {frontmatter.timestamp && <small class="grey">
             updated: <span id="timestampElement">{frontmatter.timestamp}</span>

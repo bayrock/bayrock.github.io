@@ -9,7 +9,7 @@ const description = `bayrock's ${title.replace("/", "")}`
         <h2 id="heading">{title}</h2>
         <ul role="list" class="grid">
             {collection.map((entry) => <Card 
-                url={`${title}/${entry.slug}`} 
+                url={`${title}/${entry.slug}/#heading`} 
                 image={entry.data.image.url} 
                 title={entry.data.title}
                 desc={entry.data.description}
