@@ -6,8 +6,7 @@ const year = new Date().getFullYear();
         <ul id="contact" class="icon__list">
             <li class="icon__btn"><a class="icon__link circle" href="https://github.com/bayrock" title="GitHub" target="_blank"><img src="/icons/github.svg" alt="gh" class="invert-white" width="20" height="20"></a></li>
             <li class="icon__btn"><a class="icon__link circle" href="https://bsky.app/profile/bayrock.dev" title="Bluesky" target="_blank"><img src="/icons/bluesky.svg" alt="bsky" class="invert-white" width="20" height="20"></a></li>
-            <li id="discord_desktop" class="icon__btn"><a class="icon__link circle" href="discord://discord.com/users/276359151037448192" title="Discord"><img src="/icons/discord.svg" alt="dc" class="invert-white" width="20" height="20"></a></li>
-            <li id="discord_mobile" class="icon__btn"><a class="icon__link circle" href="https://discord.com/users/276359151037448192" title="Discord" target="_blank"><img src="/icons/discord.svg" alt="dc" class="invert-white" width="20" height="20"></a></li>
+            <li class="icon__btn"><a id="discord_mobile" class="icon__link circle" href="https://discord.com/users/276359151037448192" title="Discord" target="_blank"><img src="/icons/discord.svg" alt="dc" class="invert-white" width="20" height="20"></a></li>
             <li class="icon__btn"><a class="icon__link circle" href="mailto: askbayrock@proton.me" title="Email"><img src="/icons/mail.svg" alt="mail" class="invert-white" width="20" height="20"></a></li>
         </ul>
         <small>&copy; {year} | made with ❤ | <a class="accent link" href="https://github.com/bayrock/bayrock.github.io/commits/main" title="changelog" target="_blank">changelog</a></small>
@@ -19,7 +18,6 @@ const year = new Date().getFullYear();
     footer { margin: 3.1rem 0; }
 
     #contact:target { border: 2px dotted var(--accent); }
-    #discord_mobile { display: none; }
 
     .icon__list {
         max-width: fit-content;
@@ -47,14 +45,14 @@ const year = new Date().getFullYear();
 
     :global(.light .icon__link) { border: 2px solid black; }
     :global(.light .icon__link:hover) { border-color: var(--accent); }
-
-    @media only screen and (max-width: 600px) {
-        #discord_mobile { display: inline-block; }
-        #discord_desktop { display: none; }
-    }
 </style>
 
 <script>
+    // Dynamic Discord link
+    const discordLink = document.getElementById("discord_mobile");
+    const isMobile = /Mobi|Android/i.test(navigator.userAgent);
+    if (discordLink && !isMobile) discordLink.setAttribute("href", "discord://discord.com/users/276359151037448192");
+
     // Realtime clock logic
     function updateClock() {
         const clock = document.getElementById('clock');
