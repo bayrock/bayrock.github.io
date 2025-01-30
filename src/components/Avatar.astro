@@ -27,6 +27,5 @@ const avatar = `https://avatars.githubusercontent.com/u/${githubID}?s=${size}`
         pfp.classList.remove("blur");
     }
 
-    updatePFP();
-    document.addEventListener('astro:after-swap', updatePFP);
+    document.addEventListener('astro:page-load', updatePFP);
 </script>

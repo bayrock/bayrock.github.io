@@ -43,6 +43,5 @@ const content = description?.replace(/<\/?[^>]+(>|$)/g, "").trim();
             document.documentElement.classList.remove("light");
     }
     
-    colorMode();
     document.addEventListener('astro:after-swap', colorMode);
 </script>

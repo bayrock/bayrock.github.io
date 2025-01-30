@@ -64,8 +64,7 @@ const year = new Date().getFullYear();
         clock.textContent = formattedTime;
     }
 
-    updateClock();
-    document.addEventListener('astro:after-swap', updateClock);
+    document.addEventListener('astro:page-load', updateClock);
     setInterval(updateClock, 1000);
 
     // Dynamic Discord link
@@ -78,6 +77,5 @@ const year = new Date().getFullYear();
         discordLink.setAttribute("target", "");
     }
 
-    updateDiscord();
-    document.addEventListener('astro:after-swap', updateDiscord);
+    document.addEventListener('astro:page-load', updateDiscord);
 </script>

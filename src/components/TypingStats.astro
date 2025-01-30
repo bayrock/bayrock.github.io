@@ -59,9 +59,9 @@ const layout = "Canary"
         }
     }
 
-    const updateData = async () => {
+    const updateData = async (data) => {
         // Get data
-        const { qwerty, canary, updated } = await getMonkeyData();
+        const { qwerty, canary, updated } = data;
         const completedTests = qwerty.stats.completedTests + canary.stats.completedTests;
         const failedTests = (qwerty.stats.startedTests + canary.stats.startedTests) - completedTests;
         const timeTyping = Math.ceil(secondsToHours(qwerty.stats.timeTyping + canary.stats.timeTyping));
@@ -86,6 +86,7 @@ const layout = "Canary"
         if (canaryElement) canaryElement.innerHTML = canaryWPM;
     }
 
-    updateData();
-    document.addEventListener('astro:after-swap', updateData);
+    const data = await getMonkeyData();
+    updateData(data);
+    document.addEventListener('astro:page-load', () => { updateData(data) });
 </script>

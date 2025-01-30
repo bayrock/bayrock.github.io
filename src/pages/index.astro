@@ -56,14 +56,12 @@ const description = "I'm a fullstack developer, designer and consultant w/ an ex
 </style>
 
 <script>
-    const contact = document.getElementById("contact");
-    if (window.location.hash == "#contact")
-        contact?.classList.add("flash");
-
     const contactButton = () => {
-        const button = document.getElementById("call-to-action");
         const contact = document.getElementById("contact");
+        if (window.location.hash == "#contact")
+            contact?.classList.add("flash");
 
+        const button = document.getElementById("call-to-action");
         button?.addEventListener("click", () => {
             contact?.classList.remove("flash");
             setTimeout(() => {
@@ -72,6 +70,5 @@ const description = "I'm a fullstack developer, designer and consultant w/ an ex
         });
     }
 
-    contactButton();
-    document.addEventListener('astro:after-swap', contactButton);
+    document.addEventListener('astro:page-load', contactButton);
 </script>
