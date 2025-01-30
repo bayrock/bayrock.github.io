@@ -4,14 +4,14 @@ const avatar = `https://avatars.githubusercontent.com/u/${githubID}?s=${size}`
 ---
 <picture>
     <!-- <source srcset={avatar} type="image/webp"> -->
-    <img src={avatar} alt="profile picture" id="pfp" class="circle blur" width="150" height="150">
+    <img src={avatar} alt="profile picture" id="pfp" class="circle blur" width="125" height="125">
 </picture>
 
 <style>
-    @media only screen and (max-width: 600px) {
+    @media only screen and (min-width: 600px) {
         #pfp {
-            max-width: 125px;
-            max-height: 125px;
+            width: 150px;
+            height: 150px;
         }
     }
 </style>

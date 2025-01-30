@@ -13,13 +13,10 @@ import ThemeIcon from './ThemeIcon.astro';
 </div>
 
 <style>
-    .navbar {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        margin-top: 0.8rem;
-    }
+    .navbar { grid-template-columns: 1fr 1fr; }
 
     .navbar__title {
+        text-align: center;
         font-family: var(--header);
         font-size: 1.3rem;
     }
@@ -27,7 +24,7 @@ import ThemeIcon from './ThemeIcon.astro';
     .navbar__menu {
         font-family: var(--body);
         font-size: 1.1rem;
-        text-align: right;
+        text-align: center;
     }
 
     .navbar__link {
@@ -45,10 +42,12 @@ import ThemeIcon from './ThemeIcon.astro';
 
     :global(.light .navbar__link) { color: black; }
 
-    @media only screen and (max-width: 600px) {
-        .navbar { display: initial; }
-        .navbar__title { text-align: center; }
-        .navbar__menu { text-align: center; }
-        .navbar__menu > a { margin: 0 11px; }
+    @media only screen and (min-width: 600px) {
+        .navbar { 
+            display: grid; 
+            margin-top: 0.8rem;
+        }
+        .navbar__title { text-align: initial; }
+        .navbar__menu { text-align: right; }
     }
 </style>

@@ -4,9 +4,9 @@ const switches = "Gateron Brown"
 const layout = "Canary"
 ---
 <section id="specs" class="flex">
-    <img width="56" height="37" src="/icons/glorious.svg" alt="model"> <span class="flex column">Model <small class="grey">{model}</small></span><hr>
-    <img width="22" height="34" class="invert-white" src="/icons/switch.svg" alt="switch"> <span class="flex column">Switch <small class="grey">{switches}</small></span><hr>
-    <img width="44" height="32" class="invert-white" src="/icons/keyboard.svg" alt="layout"> <span class="flex column">Layout <small class="grey">{layout}</small></span>
+    <img width="56" height="37" src="/icons/glorious.svg" alt="model"> <span class="flex column">Model <small class="gray">{model}</small></span><hr>
+    <img width="22" height="34" class="invert-white" src="/icons/switch.svg" alt="switch"> <span class="flex column">Switch <small class="gray">{switches}</small></span><hr>
+    <img width="44" height="32" class="invert-white" src="/icons/keyboard.svg" alt="layout"> <span class="flex column">Layout <small class="gray">{layout}</small></span>
 </section>
 <section id="details" class="flex" style="justify-content: space-between;">
     <section id="statistics">
@@ -14,19 +14,21 @@ const layout = "Canary"
         <ul class="badge__list">
             <li>Passed <b><span id="passedElement">0000</span></b> tests <span class="accent">✔</span></li>
             <li>Failed <b><span id="failedElement">00000</span></b> tests <span class="brand">𝐱</span></li>
-            <li>Typed <b><span id="timeElement">00</span></b> hours <span class="grey">⏰</span></li>
+            <li>Typed <b><span id="timeElement">00</span></b> hours <span class="gray">⏰</span></li>
         </ul>
     </section>
     <section id="speed">
         <h2>speed</h2>
         <ul class="badge__list">
-            <li><span class="badge badge--item">QWERTY</span> <b><span id="qwerty">000</span></b> wpm <span class="grey">⌨</span></li>
-            <li><span class="badge badge--item">Canary</span> <b><span id="canary">00</span></b> wpm <span class="grey">⌨</span></li>
+            <li><span class="badge badge--item">QWERTY</span> <b><span id="qwerty">000</span></b> wpm <span class="gray">⌨</span></li>
+            <li><span class="badge badge--item">Canary</span> <b><span id="canary">00</span></b> wpm <span class="gray">⌨</span></li>
         </ul>
     </section>
 </section>
 
 <style>
+    hr { margin-left: 12px; }
+
     #specs {
         font-family: var(--body);
         padding-top: 15px;
@@ -35,8 +37,8 @@ const layout = "Canary"
 
     .flex > img { padding: 0 12px; }
 
-    @media only screen and (max-width: 600px) {
-        hr { margin-left: 12px; }
+    @media only screen and (min-width: 600px) {
+        hr { margin-left: auto; }
     }
 </style>
 

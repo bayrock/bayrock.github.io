@@ -1,0 +1,113 @@
+/* Global (Dark) */
+:root {
+    --brand: #df636c;
+    --accent: #78c2ad;
+    --pink: #ffe6e7;
+    --neutral: #765471;
+    --header: 'Play', sans-serif;
+    --body: 'Josefin Sans', sans-serif;
+}
+
+html {
+    background-color: black;
+    color: white;
+}
+
+body {
+    max-width: 350px;
+    margin: 0 auto;
+    text-align: justify;
+}
+
+h1, h2 {
+    font-family: var(--header);
+    font-weight: normal;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin: 0;
+    margin-bottom: 5px;
+}
+
+h2 {
+    text-decoration: underline var(--brand);
+    text-decoration-thickness: 4px;
+    text-underline-offset: 6px;
+    font-size: 2.0rem;
+    margin-bottom: 0;
+}
+
+p {
+    font-family: var(--body);
+    font-size: 1.1rem;
+    hyphens: auto;
+    line-height: 1.5;
+    text-indent: 1rem;
+}
+
+small, li { font-family: var(--body); }
+
+a { cursor: pointer; }
+
+/* Badges */
+.badge {
+    background-color: var(--neutral);
+    color: white;
+    border-radius: 6px;
+    font-family: var(--body);
+    font-weight: 600;
+    font-size: .85rem;
+    padding: 0.3em 0.6em 0.2em;
+}
+
+.badge__list {
+    text-indent: 1rem;
+    list-style: none;
+    padding: 0;
+}
+
+.badge__list > li { margin-top: 10px; }
+
+.badge--item {
+    border-radius: 4px;
+    font-size: 0.7rem;
+    margin-right: 1px;
+    padding: 0.5em 0.3em 0.3em 0.3em;
+}
+
+/* Colors */
+.white { color: white; }
+.gray { color: gray; }
+.black { color: black; }
+.brand { color: var(--brand); }
+.accent { color: var(--accent); }
+.pink { color: var(--pink); }
+.neutral { color: var(--neutral); }
+
+ /* Helpers */
+.center { text-align: center; }
+.right { float: right; }
+.invert-white { filter: invert(0%); }
+.invert-black { filter: invert(100%); }
+.link { text-decoration: none; }
+.link:hover { text-decoration: underline; }
+.hidden { display: none; }
+.circle { border-radius: 50%; }
+.flex { display: flex; }
+.column { flex-direction: column; }
+.blur { filter: blur(0.2rem); }
+
+.dotted {
+    color: white;
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-decoration-thickness: 2px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
+    gap: 1rem;
+    padding: 0;
+}
