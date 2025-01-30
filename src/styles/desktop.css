@@ -96,6 +96,7 @@ a { cursor: pointer; }
 .circle { border-radius: 50%; }
 .flex { display: flex; }
 .column { flex-direction: column; }
+.blur { filter: blur(0.3rem); }
 
 .dotted {
     color: white;

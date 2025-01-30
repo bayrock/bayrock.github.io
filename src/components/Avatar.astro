@@ -1,17 +1,32 @@
 ---
 import githubID from '../../ghid.mjs';
-const avatar = `https://avatars.githubusercontent.com/u/${githubID}?s=230`
+const avatar = `https://avatars.githubusercontent.com/u/${githubID}?s=25`
 ---
 <picture>
-    <source srcset={avatar} type="image/webp">
-    <img src={avatar} alt="profile picture" class="pfp circle" width="150" height="150">
+    <!-- <source srcset={avatar} type="image/webp"> -->
+    <img src={avatar} alt="profile picture" id="pfp" class="circle blur" width="150" height="150">
 </picture>
 
 <style>
     @media only screen and (max-width: 600px) {
-        .pfp {
+        #pfp {
             max-width: 125px;
             max-height: 125px;
         }
     }
 </style>
+
+<script>
+    const updatePFP = () => {
+        const pfp = document.getElementById("pfp");
+        const resize = pfp?.getAttribute("src")?.split("?")[0];
+        if (!pfp || !resize) return;
+
+        pfp.setAttribute("src", resize);
+        pfp.classList.add("unblur");
+        pfp.classList.remove("blur");
+    }
+
+    updatePFP();
+    document.addEventListener('astro:after-swap', updatePFP);
+</script>
