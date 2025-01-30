@@ -48,14 +48,6 @@ const year = new Date().getFullYear();
 </style>
 
 <script>
-    // Dynamic Discord link
-    const discordLink = document.getElementById("discord_link");
-    const isMobile = /Mobi|Android/i.test(navigator.userAgent);
-    if (discordLink && !isMobile) {
-        discordLink.setAttribute("href", "discord://discord.com/users/276359151037448192");
-        discordLink.setAttribute("target", "");
-    }
-
     // Realtime clock logic
     const updateClock = () => {
         const clock = document.getElementById('clock');
@@ -75,4 +67,17 @@ const year = new Date().getFullYear();
     updateClock();
     document.addEventListener('astro:after-swap', updateClock);
     setInterval(updateClock, 1000);
+
+    // Dynamic Discord link
+    const updateDiscord = () => {
+        const discordLink = document.getElementById("discord_link");
+        const isMobile = /Mobi|Android/i.test(navigator.userAgent);
+        if (!discordLink || isMobile) return;
+
+        discordLink.setAttribute("href", "discord://discord.com/users/276359151037448192");
+        discordLink.setAttribute("target", "");
+    }
+
+    updateDiscord();
+    document.addEventListener('astro:after-swap', updateDiscord);
 </script>
