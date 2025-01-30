@@ -44,7 +44,7 @@ const layout = "Canary"
     import { secondsToHours, millisecondsToSeconds } from "../modules/getTimeConversion";
     import getTimeString from "../modules/getTimeString";
 
-    async function getMonkeyData() {
+    const getMonkeyData = async () => {
         try {
             const response = await fetch("https://api.bayrock.dev/monkeytype.json");
 
@@ -57,7 +57,7 @@ const layout = "Canary"
         }
     }
 
-    async function updateData() {
+    const updateData = async () => {
         // Get data
         const { qwerty, canary, updated } = await getMonkeyData();
         const completedTests = qwerty.stats.completedTests + canary.stats.completedTests;
