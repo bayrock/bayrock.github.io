@@ -53,7 +53,13 @@ const layout = "Canary"
             if (!response.ok)
                 throw new Error(`Error: ${response.status} - ${response.statusText}`);
 
-            return await response.json();
+            const lastModified = response.headers.get("Last-Modified");
+            const json = await response.json();
+
+        return {
+            ...json,
+            updated: lastModified ? new Date(lastModified).getTime() : Date.now()
+        };
         } catch (error) {
             console.error(error);
         }
@@ -67,7 +73,7 @@ const layout = "Canary"
         const timeTyping = Math.ceil(secondsToHours(qwerty.stats.timeTyping + canary.stats.timeTyping));
         const qwertyWPM = Math.ceil(qwerty.bests.words[10][0].wpm);
         const canaryWPM = Math.ceil(canary.bests.words[10][0].wpm);
-        const lastUpdated = getTimeString(Math.ceil(millisecondsToSeconds(Date.now()) - updated));
+        const lastUpdated = getTimeString(Math.ceil(millisecondsToSeconds(Date.now()) - Math.floor(millisecondsToSeconds(updated))));
         
         // Get elements
         const passedElement = document.getElementById("passedElement");
