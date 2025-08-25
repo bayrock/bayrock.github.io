@@ -1,30 +1,37 @@
 ---
 import ThemeIcon from './ThemeIcon.astro';
 ---
-<div class="navbar">
-    <div class="navbar__title">
-        <a href="/" id="home" class="navbar__link">bayrock.dev</a>
-    </div>
+<nav class="navbar">
+    <a href="/" id="home" class="navbar__title">bayrock.dev</a>
     <div class="navbar__menu">
         <a href="/projects" class="navbar__link" aria-label="Visit projects page">/projects</a>
         <a href="/blog" class="navbar__link" aria-label="Visit blog page">/blog</a>
         <ThemeIcon />
     </div>
-</div>
+</nav>
 
 <style>
-    .navbar { grid-template-columns: 1fr 1fr; }
+    .navbar {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
 
     .navbar__title {
-        text-align: center;
         font-family: var(--header);
         font-size: 1.3rem;
+        text-decoration: none;
+        color: white;
     }
 
     .navbar__menu {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
         font-family: var(--body);
         font-size: 1.1rem;
-        text-align: center;
+        align-items: baseline;
     }
 
     .navbar__link {
@@ -32,22 +39,28 @@ import ThemeIcon from './ThemeIcon.astro';
         text-decoration: none;
     }
 
-    .navbar__link:hover, .navbar__menu > .navbar__link:focus {
+    .navbar__link:hover,
+    .navbar__link:focus {
         text-decoration: underline var(--brand);
         text-decoration-thickness: 2px;
         text-underline-offset: 6px;
     }
 
-    .navbar__menu > .navbar__link { margin: 0 10px; }
+    :global(.light .navbar__title),
+    :global(.light .navbar__link) {
+        color: black;
+    }
 
-    :global(.light .navbar__link) { color: black; }
-
-    @media only screen and (min-width: 600px) {
-        .navbar { 
-            display: grid; 
-            margin-top: 0.8rem;
+    @media (min-width: 600px) {
+        .navbar {
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: baseline;
+            padding: 0.8rem 1rem;
         }
-        .navbar__title { text-align: initial; }
-        .navbar__menu { text-align: right; }
+
+        .navbar__menu {
+            justify-content: flex-end;
+        }
     }
 </style>
