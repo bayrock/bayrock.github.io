@@ -4,8 +4,9 @@ import ThemeIcon from './ThemeIcon.astro';
 <nav class="navbar">
     <a href="/" id="home" class="navbar__title">bayrock.dev</a>
     <div class="navbar__menu">
-        <a href="/projects" class="navbar__link" aria-label="Visit projects page">/projects</a>
-        <a href="/blog" class="navbar__link" aria-label="Visit blog page">/blog</a>
+        <!-- <a href="/projects" class="white link" aria-label="Visit projects page">/projects</a> -->
+        <!-- <a href="/blog" class="white link" aria-label="Visit blog page">/blog</a> -->
+        <a href="#" class="gray link" title="Coming soon">/feeds</a>
         <ThemeIcon />
     </div>
 </nav>
@@ -34,13 +35,8 @@ import ThemeIcon from './ThemeIcon.astro';
         align-items: baseline;
     }
 
-    .navbar__link {
-        color: white;
-        text-decoration: none;
-    }
-
-    .navbar__link:hover,
-    .navbar__link:focus {
+    .navbar__menu > .link:hover,
+    .navbar__menu > .link:focus {
         text-decoration: underline var(--brand);
         text-decoration-thickness: 2px;
         text-underline-offset: 6px;
