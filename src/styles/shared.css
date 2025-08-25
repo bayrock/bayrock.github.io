@@ -1,9 +1,9 @@
 /* Global (Dark) */
 :root {
-    --brand: #df636c;
-    --accent: #78c2ad;
+    --brand: #5d75b6;
+    --secondary: #4f62ae;
+    --accent: #6cc481;
     --pink: #ffe6e7;
-    --neutral: #765471;
     --header: 'Play', sans-serif;
     --body: 'Josefin Sans', sans-serif;
 }
@@ -52,7 +52,7 @@ a { cursor: pointer; }
 
 /* Badges */
 .badge {
-    background-color: var(--neutral);
+    background-color: var(--secondary);
     color: white;
     border-radius: 6px;
     font-family: var(--body);
@@ -81,9 +81,9 @@ a { cursor: pointer; }
 .gray { color: gray; }
 .black { color: black; }
 .brand { color: var(--brand); }
+.secondary { color: var(--secondary); }
 .accent { color: var(--accent); }
 .pink { color: var(--pink); }
-.neutral { color: var(--neutral); }
 
  /* Helpers */
 .center { text-align: center; }
