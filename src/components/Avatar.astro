@@ -1,10 +1,10 @@
 ---
-import { githubID, size } from '../../avatar.mjs';
-const avatar = `https://avatars.githubusercontent.com/u/${githubID}?s=${size}`
+import { avatar } from '../../custom.config.mjs';
+const pfp = `https://avatars.githubusercontent.com/u/${avatar.githubID}?s=${avatar.size}`
 ---
 <picture>
     <!-- <source srcset={avatar} type="image/webp"> -->
-    <img src={avatar} alt="profile picture" id="pfp" class="circle blur" width="120" height="120">
+    <img src={pfp} alt="profile picture" id="pfp" class="circle blur" width="120" height="120">
 </picture>
 
 <style>

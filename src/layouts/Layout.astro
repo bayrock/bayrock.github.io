@@ -4,8 +4,8 @@ import { fade } from 'astro:transitions';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.pcss';
-import { githubID, size } from '../../avatar.mjs';
-const avatar = `https://avatars.githubusercontent.com/u/${githubID}?s=${size}`
+import { avatar } from '../../custom.config.mjs';
+const favicon = `https://avatars.githubusercontent.com/u/${avatar.githubID}?s=${avatar.size}`
 const { title, description } = Astro.props;
 const content = description?.replace(/<\/?[^>]+(>|$)/g, "").trim();
 ---
@@ -15,7 +15,7 @@ const content = description?.replace(/<\/?[^>]+(>|$)/g, "").trim();
         <meta charset="utf-8" />
         <meta name="description" content={content || "bayrock's domain"}>
         <meta name="viewport" content="width=device-width" />
-        <link rel="icon" type="image/png" id="favicon" href={avatar} />     
+        <link rel="icon" type="image/png" id="favicon" href={favicon} />     
         <meta name="generator" content={Astro.generator} />
         <title>{title}</title>
         <ViewTransitions />
