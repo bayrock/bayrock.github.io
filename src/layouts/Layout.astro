@@ -1,5 +1,5 @@
 ---
-import { ViewTransitions } from 'astro:transitions';
+import { ClientRouter } from 'astro:transitions';
 import { fade } from 'astro:transitions';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
@@ -18,7 +18,7 @@ const content = description?.replace(/<\/?[^>]+(>|$)/g, "").trim();
         <link rel="icon" type="image/png" id="favicon" href={favicon} />     
         <meta name="generator" content={Astro.generator} />
         <title>{title}</title>
-        <ViewTransitions />
+        <ClientRouter />
 	</head>
 	<body>
         <Header />
