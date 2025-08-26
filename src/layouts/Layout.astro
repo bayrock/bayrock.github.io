@@ -7,7 +7,8 @@ import '../styles/global.pcss';
 import { avatar } from '../../custom.config.mjs';
 const favicon = `https://avatars.githubusercontent.com/u/${avatar.githubID}?s=${avatar.size}`
 const { title, description } = Astro.props;
-const content = description?.replace(/<\/?[^>]+(>|$)/g, "").trim();
+import stripHTML from "../modules/stripHTML";
+const content = stripHTML(description).trim();
 ---
 <!DOCTYPE html>
 <html transition:animate="none" lang="en">
