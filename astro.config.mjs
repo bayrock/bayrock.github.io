@@ -1,8 +1,7 @@
 import { defineConfig } from 'astro/config';
 
-// https://astro.build/config
 export default defineConfig({
-  site: 'https://bayrock.dev',
+  site: 'https://shojo.me',
   server: {
     port: 80
   },

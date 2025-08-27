@@ -28,3 +28,6 @@ todo.md
 
 # macOS-specific files
 .DS_Store
+
+# mailmap
+mailmap.txt

@@ -1,7 +1,7 @@
-# 🥀 [bayrock.dev](https://www.bayrock.dev)
+# 🌸 [shojo.me](https://shojo.me)
 ### Built with the following technologies:
 
-* [api.bayrock.dev](https://api.bayrock.dev/) - Personal API
+* [api.shojo.me](https://api.shojo.me/) - Personal API
 * [Astro](https://astro.build/) - Meta-framework
 * [PostCSS](https://postcss.org/) - CSS preprocessor
 * [pnpm](https://pnpm.io/) - Package manager
