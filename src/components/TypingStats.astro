@@ -1,33 +1,36 @@
 ---
-const model = "Glorious GMMK"
-const switches = "Gateron Brown"
-const layout = "Canary"
+const model = "Apple Magic"
+const switches = "Scissor"
+const layout = "QWERTY"
 ---
 <section id="specs" class="flex">
-    <img width="56" height="37" src="/icons/glorious.svg" alt="model"> <span class="flex column">Model <small class="gray">{model}</small></span><hr>
+    <img width="30" height="35" src="/icons/apple.svg" alt="model"> <span class="flex column">Model <small class="gray">{model}</small></span><hr>
     <img width="22" height="34" class="invert-white" src="/icons/switch.svg" alt="switch"> <span class="flex column">Switch <small class="gray">{switches}</small></span><hr>
-    <img width="44" height="32" class="invert-white" src="/icons/keyboard.svg" alt="layout"> <span class="flex column">Layout <small class="gray">{layout}</small></span>
+    <img width="38" height="32" class="invert-white" src="/icons/keyboard.svg" alt="layout"> <span class="flex column">Layout <small class="gray">{layout}</small></span>
 </section>
 <section id="details" class="flex" style="justify-content: space-between;">
     <section id="statistics">
         <h2>statistics</h2>
         <ul class="badge__list">
-            <li>Passed <b><span id="passedElement" class="text-loader">0000</span></b> tests <span class="accent">✔</span></li>
-            <li>Failed <b><span id="failedElement" class="text-loader">00000</span></b> tests <span class="brand">𝐱</span></li>
-            <li>Typed <b><span id="timeElement" class="text-loader">00</span></b> hours <span class="gray">⏰</span></li>
+            <li><span class="badge badge--item">passed</span> <b><span id="passedElement" class="text-loader">0000</span></b> tests <span class="accent">✔</span></li>
+            <li><span class="badge badge--item">failed</span> <b><span id="failedElement" class="text-loader">00000</span></b> tests <span style="color: red;">𝐱</span></li>
+            <li><span class="badge badge--item">typed</span> <b><span id="timeElement" class="text-loader">00</span></b> hours <span class="gray">⏰</span></li>
         </ul>
     </section>
     <section id="speed">
         <h2>speed</h2>
         <ul class="badge__list">
-            <li><span class="badge badge--item">QWERTY</span> <b><span id="qwerty" class="text-loader">000</span></b> wpm <span class="gray">⌨</span></li>
-            <li><span class="badge badge--item">Canary</span> <b><span id="canary" class="text-loader">00</span></b> wpm <span class="gray">⌨</span></li>
+            <li><span class="badge badge--item">wpm</span> <b><span id="qwertyElement" class="text-loader">000</span></b> <span class="gray">⌨</span></li>
+        </ul>
+        <h2>streak</h2>
+        <ul class="badge__list">
+            <li><span class="badge badge--item">days</span> <b><span id="streakElement" class="text-loader">000</span></b> <span class="gray">🔥</span></li>
         </ul>
     </section>
 </section>
 
 <style>
-    hr { margin-left: 12px; }
+    hr { margin-left: 8px; }
 
     #specs {
         font-family: var(--body);
@@ -48,18 +51,12 @@ const layout = "Canary"
 
     const getMonkeyData = async () => {
         try {
-            const response = await fetch("https://api.shojo.me/monkeytype.json");
+            const response = await fetch("https://api.shojo.me/monkeytype");
 
             if (!response.ok)
                 throw new Error(`Error: ${response.status} - ${response.statusText}`);
 
-            const lastModified = response.headers.get("Last-Modified");
-            const json = await response.json();
-
-        return {
-            ...json,
-            updated: lastModified ? new Date(lastModified).getTime() : Date.now()
-        };
+            return await response.json();
         } catch (error) {
             console.error(error);
         }
@@ -67,29 +64,29 @@ const layout = "Canary"
 
     const updateData = async (data) => {
         // Get data
-        const { qwerty, canary, updated } = data;
-        const completedTests = qwerty.stats.completedTests + canary.stats.completedTests;
-        const failedTests = (qwerty.stats.startedTests + canary.stats.startedTests) - completedTests;
-        const timeTyping = Math.ceil(secondsToHours(qwerty.stats.timeTyping + canary.stats.timeTyping));
+        const { qwerty, timestamp } = data;
+        const completedTests = qwerty.stats.completedTests;
+        const failedTests = qwerty.stats.startedTests - completedTests;
+        const timeTyping = Math.ceil(secondsToHours(qwerty.stats.timeTyping));
         const qwertyWPM = Math.ceil(qwerty.bests.words[10][0].wpm);
-        const canaryWPM = Math.ceil(canary.bests.words[10][0].wpm);
-        const lastUpdated = getTimeString(Math.ceil(millisecondsToSeconds(Date.now()) - Math.floor(millisecondsToSeconds(updated))));
+        const streak = qwerty.streak;
+        const lastUpdated = getTimeString(Math.ceil(millisecondsToSeconds(Date.now()) - Math.floor(millisecondsToSeconds(timestamp))));
         
         // Get elements
         const passedElement = document.getElementById("passedElement");
         const failedElement = document.getElementById("failedElement");
         const timeElement = document.getElementById("timeElement");
+        const qwertyElement = document.getElementById("qwertyElement");
+        const streakElement = document.getElementById("streakElement");
         const timestampElement = document.getElementById("timestampElement");
-        const qwertyElement = document.getElementById("qwerty");
-        const canaryElement = document.getElementById("canary");
 
         // Set data to elements
         if (passedElement) passedElement.innerHTML = completedTests;
         if (failedElement) failedElement.innerHTML = failedTests;
         if (timeElement) timeElement.innerHTML = timeTyping;
-        if (timestampElement) timestampElement.innerHTML = lastUpdated;
         if (qwertyElement) qwertyElement.innerHTML = qwertyWPM;
-        if (canaryElement) canaryElement.innerHTML = canaryWPM;
+        if (streakElement) streakElement.innerHTML = streak;
+        if (timestampElement) timestampElement.innerHTML = lastUpdated;
 
         // Remove loaders
         document.querySelectorAll(".text-loader").forEach((e) => {
