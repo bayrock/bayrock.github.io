@@ -1,0 +1,47 @@
+---
+import ArticleLayout from '../layouts/ArticleLayout.astro';
+import Track from '../components/Track.astro';
+import { getRecentTracks } from '../modules/getRecentTracks';
+import getTimeRelative from "../modules/getTimeRelative";
+
+const tracks = await getRecentTracks(5);
+const lastUpdated = getTimeRelative(tracks[0]?.track.timestamp || 0);
+
+const description = "serene's music taste";
+const frontmatter = {
+    title: 'now playing',
+    citation: {
+        url: 'https://api.shojo.me/lastfm',
+        name: 'api.shojo.me'
+    },
+    backlink: {
+        url: '/#music',
+        name: '/home'
+    },
+    timestamp: lastUpdated
+}
+---
+<ArticleLayout title={frontmatter.title} frontmatter={frontmatter} description={description}>
+  <ul class="track-list">
+    {tracks.map((group) => <Track group={group} />)}
+  </ul>
+</ArticleLayout>
+
+<style>
+  .track-list { list-style: none; padding: 0; margin-top: 1rem; }
+</style>
+
+<script>
+    import getTimeRelative from "../modules/getTimeRelative";
+
+    function paintTimes() {
+        document.querySelectorAll<HTMLTimeElement>('time[data-ts]').forEach((el) => {
+            const timestamp = Number(el.dataset.ts);
+            el.textContent = getTimeRelative(timestamp);
+            el.dateTime = new Date(timestamp).toISOString();
+        });
+    }
+    
+    paintTimes();
+    document.addEventListener('astro:page-load', paintTimes);
+</script>

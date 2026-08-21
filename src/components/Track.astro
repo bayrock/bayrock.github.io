@@ -1,0 +1,44 @@
+---
+// src/components/Track.astro
+import type { ScrobbleGroup } from '../modules/getRecentTracks';
+interface Props { group: ScrobbleGroup }
+const { group } = Astro.props;
+const { track } = group;
+---
+<li class="track">
+  <img
+    class="track__art circle"
+    src={track.image ?? '/images/vinyl-placeholder.svg'}
+    alt={`${track.album} cover`}
+    loading="lazy" width="44" height="44"
+  />
+  <div class="track__meta">
+    <a class="link track__title" href={track.trackUrl} target="_blank" rel="noopener">
+      {track.track}
+    </a>
+    <small class="gray">{track.artist}</small>
+  </div>
+  <div class="track__right">
+    {group.playCount > 1 && <span class="badge badge--item">×{group.playCount}</span>}
+    <time class="gray track__time" data-ts={track.timestamp}></time>
+  </div>
+</li>
+
+<style>
+  .track {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.55rem 0;
+    border-bottom: 1px solid #1a1a1a;
+    text-indent: 0;
+  }
+  .track__art { object-fit: cover; flex-shrink: 0; background: #111; }
+  .track__meta { display: flex; flex-direction: column; flex: 1; min-width: 0; }
+  .track__title {
+    color: white; font-family: var(--body); font-size: 1rem;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .track__right { display: flex; align-items: center; gap: 0.4rem; flex-shrink: 0; }
+  .track__time { font-size: 0.75rem; }
+</style>
