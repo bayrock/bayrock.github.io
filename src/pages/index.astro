@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Button from '../components/Button.astro';
 const title = "shojo.me";
-const description = "i'm a fullstack developer, designer and influencer."
+const description = "i'm a fullstack developer, designer and software architect."
 ---
 <Layout title={title} description={description}>
     <section id="about">
@@ -20,13 +20,14 @@ const description = "i'm a fullstack developer, designer and influencer."
         <div class="skills center">
             <img class="skills__img" width="32" height="32" title="HTML" src="/icons/dev/html5-original.svg"/>
             <img class="skills__img" width="32" height="32" title="CSS" src="/icons/dev/css3-original.svg"/>
-            <img class="skills__img" width="32" height="32" title="JavaScript" src="/icons/dev/javascript-original.svg"/>
+            <img class="skills__img" width="32" height="32" title="TypeScript" src="/icons/dev/typescript-original.svg"/>
             <img class="skills__img" width="32" height="32" title="Elixir" src="/icons/dev/elixir-original.svg"/>
             <img class="skills__img" width="32" height="32" title="Figma" src="/icons/dev/figma-original.svg"/>
+            <img class="skills__img invert-black" width="32" height="32" title="Vercel" src="/icons/dev/vercel-original.svg"/>
             <img class="skills__img invert-black" width="32" height="32" title="Astro" src="/icons/dev/astro-plain.svg"/>
-            <img class="skills__img" width="32" height="32" title="Vite" src="/icons/dev/vitejs-original.svg"/>
             <img class="skills__img" width="32" height="32" title="Arch (Linux)" src="/icons/dev/archlinux-original.svg"/>
             <img class="skills__img" width="32" height="32" title="Git" src="/icons/dev/git-original.svg"/>
+            <img class="skills__img" width="32" height="32" title="Cloudflare" src="/icons/dev/cloudflare-original.svg"/>
         </div>
     </section>
     <section id="interests">
@@ -45,8 +46,8 @@ const description = "i'm a fullstack developer, designer and influencer."
 
     @media only screen and (min-width: 600px) {
         .skills__img {
-            height: 44px;
-            width: 44px;
+            height: 40px;
+            width: 40px;
             margin: 8px 4px;
         }
     }
