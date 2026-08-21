@@ -1,5 +1,5 @@
 ---
-title: 'Project 1'
+title: 'project 1'
 description: 'Coming soon!'
 image:
     url: '/projects/thumbnail.webp'

@@ -46,8 +46,8 @@ const layout = "QWERTY"
 </style>
 
 <script>
-    import { secondsToHours, millisecondsToSeconds } from "../modules/getTimeConversion";
-    import getTimeString from "../modules/getTimeString";
+    import { secondsToHours } from "../modules/getTimeConversion";
+    import getTimeRelative from "../modules/getTimeRelative";
 
     const getMonkeyData = async () => {
         try {
@@ -70,7 +70,7 @@ const layout = "QWERTY"
         const timeTyping = Math.ceil(secondsToHours(qwerty.stats.timeTyping));
         const qwertyWPM = Math.ceil(qwerty.bests.words[10][0].wpm);
         const streak = qwerty.streak;
-        const lastUpdated = getTimeString(Math.ceil(millisecondsToSeconds(Date.now()) - Math.floor(millisecondsToSeconds(timestamp))));
+        const lastUpdated = getTimeRelative(timestamp);
         
         // Get elements
         const passedElement = document.getElementById("passedElement");

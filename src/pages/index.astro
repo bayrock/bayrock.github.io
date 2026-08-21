@@ -2,21 +2,21 @@
 import Layout from '../layouts/Layout.astro';
 import Button from '../components/Button.astro';
 const title = "shojo.me";
-const description = "I'm a fullstack developer and designer."
+const description = "i'm a fullstack developer, designer and influencer."
 ---
 <Layout title={title} description={description}>
     <section id="about">
-        <h2 id="heading">About</h2>
+        <h2 id="heading">about</h2>
         <p>
-            {description}
-            I strive to design, build and deploy <a id="projects" class="dotted" href="/projects/#heading">projects</a> and services stylishly and efficiently whilst remaining true to my humble hobbyist roots.
+            {description}&nbsp;
+            i strive to design, build and deploy <a id="projects" class="dotted" href="/projects/#heading">projects</a> and services stylishly and efficiently whilst remaining true to my humble hobbyist roots.
         </p>
         <div class="center">
             <Button url="#contact" label="View contact links">contact me</Button>
         </div>
     </section>
     <section id="skills">
-        <h2>Skills</h2>
+        <h2>skills</h2>
         <div class="skills center">
             <img class="skills__img" width="32" height="32" title="HTML" src="/icons/dev/html5-original.svg"/>
             <img class="skills__img" width="32" height="32" title="CSS" src="/icons/dev/css3-original.svg"/>
@@ -30,11 +30,11 @@ const description = "I'm a fullstack developer and designer."
         </div>
     </section>
     <section id="interests">
-        <h2>Interests</h2>
+        <h2>interests</h2>
         <p>
-            I enjoy coding, <a id="typing" class="dotted" href="/keyboard/#heading">typing</a>, cinema, music, and learning new things!<br>
-            I'm happily taken and identify as <a id="transfeminine" class="dotted" href="/blurb/transfeminine/#heading">transfeminine</a> 
-            and <a id="pansexual" class="dotted" href="/blurb/pansexual/#heading">pansexual</a>.
+            i enjoy coding, <a id="typing" class="dotted" href="/typing/#heading">typing</a>, cinema, <a id="music" class="dotted" href="/music/#heading">music</a>, and learning new things!<br>
+            i'm currently single and identify as <a id="transfeminine" class="dotted" href="/blurb/transfeminine/#heading">transfeminine</a>
+            &nbsp;and <a id="pansexual" class="dotted" href="/blurb/pansexual/#heading">pansexual</a>.
         </p>
     </section>
 </Layout>
