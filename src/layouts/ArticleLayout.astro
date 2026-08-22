@@ -1,6 +1,10 @@
 ---
 import Layout from './Layout.astro';
 const { frontmatter, description } = Astro.props;
+
+const pageId = Astro.url.pathname
+    .replace(/^\/|\/$/g, '')   // strip leading/trailing slashes
+    .replace(/[^a-z0-9]+/gi, '-') || 'home';  // sanitize, fallback for "/"
 ---
 <Layout title={frontmatter.title} description={description}>
     <article>
@@ -13,7 +17,7 @@ const { frontmatter, description } = Astro.props;
             <a class="accent link right" href={frontmatter.backlink?.url || "/#home"}>{frontmatter.backlink?.name || "/home"}</a>
         </small><br>
         {frontmatter.timestamp && <small class="gray">
-            updated: <span id={`timestamp-${frontmatter.title.replace(/\s+/g, '-')}`}>{frontmatter.timestamp}</span>
+            updated: <span id={`timestamp-${pageId}`}>{frontmatter.timestamp}</span>
         </small>}
     </article>
 </Layout>
