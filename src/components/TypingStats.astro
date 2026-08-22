@@ -52,18 +52,15 @@ const layout = "QWERTY"
     const getMonkeyData = async () => {
         try {
             const response = await fetch("https://api.shojo.me/monkeytype");
-
             if (!response.ok)
                 throw new Error(`Error: ${response.status} - ${response.statusText}`);
-
             return await response.json();
         } catch (error) {
             console.error(error);
         }
     }
 
-    const updateData = async (data) => {
-        // Get data
+    const updateData = (data) => {
         const { qwerty, timestamp } = data;
         const completedTests = qwerty.stats.completedTests;
         const failedTests = qwerty.stats.startedTests - completedTests;
@@ -71,16 +68,14 @@ const layout = "QWERTY"
         const qwertyWPM = Math.ceil(qwerty.bests.words[10][0].wpm);
         const streak = qwerty.streak;
         const lastUpdated = getTimeRelative(timestamp);
-        
-        // Get elements
+
         const passedElement = document.getElementById("passedElement");
         const failedElement = document.getElementById("failedElement");
         const timeElement = document.getElementById("timeElement");
         const qwertyElement = document.getElementById("qwertyElement");
         const streakElement = document.getElementById("streakElement");
-        const timestampElement = document.getElementById("timestampElement");
+        const timestampElement = document.getElementById("timestamp-typing");
 
-        // Set data to elements
         if (passedElement) passedElement.innerHTML = completedTests;
         if (failedElement) failedElement.innerHTML = failedTests;
         if (timeElement) timeElement.innerHTML = timeTyping;
@@ -88,13 +83,16 @@ const layout = "QWERTY"
         if (streakElement) streakElement.innerHTML = streak;
         if (timestampElement) timestampElement.innerHTML = lastUpdated;
 
-        // Remove loaders
         document.querySelectorAll(".text-loader").forEach((e) => {
             e.classList.remove("text-loader");
         });
     }
 
-    const data = await getMonkeyData();
-    updateData(data);
-    document.addEventListener('astro:page-load', () => { updateData(data) });
+    const refresh = async () => {
+        const data = await getMonkeyData();
+        if (data) updateData(data);
+    }
+
+    refresh();
+    document.addEventListener('astro:page-load', refresh);
 </script>
