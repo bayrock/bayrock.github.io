@@ -1,4 +1,4 @@
-// src/lib/lastfm.ts
+
 export interface LastFmTrack {
   artist: string;
   track: string;
@@ -13,21 +13,27 @@ export interface ScrobbleGroup {
   playCount: number;
 }
 
+export interface Tracks {
+  songs: ScrobbleGroup[];
+  timestamp: number
+}
+
 const API_URL = "https://api.shojo.me/lastfm";
 
-export async function getRecentTracks(limit = 25): Promise<ScrobbleGroup[]> {
+export async function getRecentTracks(limit = 25): Promise<{songs: ScrobbleGroup[], timestamp: number}> {
   const res = await fetch(API_URL);
   if (!res.ok) throw new Error(`lastfm fetch failed: ${res.status}`);
-  const { tracks }: { tracks: LastFmTrack[] } = await res.json();
+  const { tracks, timestamp }: { tracks: LastFmTrack[], timestamp: number } = await res.json();
 
-  const groups: ScrobbleGroup[] = [];
+  const songs: ScrobbleGroup[] = [];
   for (const t of tracks) {
-    const prev = groups.at(-1);
+    const prev = songs.at(-1);
     if (prev && prev.track.artist === t.artist && prev.track.track === t.track) {
       prev.playCount++;
     } else {
-      groups.push({ track: t, playCount: 1 });
+      songs.push({ track: t, playCount: 1 });
     }
   }
-  return groups.slice(0, limit);
+
+  return {songs: songs.slice(0, limit), timestamp};
 }

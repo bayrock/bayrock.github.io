@@ -4,8 +4,7 @@ import Track from '../components/Track.astro';
 import { getRecentTracks } from '../modules/getRecentTracks';
 import getTimeRelative from "../modules/getTimeRelative";
 
-const tracks = await getRecentTracks(5);
-const lastUpdated = getTimeRelative(tracks[0]?.track.timestamp || 0);
+const { songs, timestamp } = await getRecentTracks(5);
 
 const description = "serene's music taste";
 const frontmatter = {
@@ -18,30 +17,45 @@ const frontmatter = {
         url: '/#music',
         name: '/home'
     },
-    timestamp: lastUpdated
+    timestamp: getTimeRelative(timestamp)
 }
 ---
 <ArticleLayout title={frontmatter.title} frontmatter={frontmatter} description={description}>
   <ul class="track-list">
-    {tracks.map((group) => <Track group={group} />)}
+    {songs.map((group) => <Track group={group} />)}
   </ul>
 </ArticleLayout>
 
-<style>
-  .track-list { list-style: none; padding: 0; margin-top: 1rem; }
-</style>
-
 <script>
-    import getTimeRelative from "../modules/getTimeRelative";
+  import { getRecentTracks } from '../modules/getRecentTracks';
+  import { renderTrack } from '../modules/renderTrack';
+  import getTimeRelative from '../modules/getTimeRelative';
 
-    function paintTimes() {
-        document.querySelectorAll<HTMLTimeElement>('time[data-ts]').forEach((el) => {
-            const timestamp = Number(el.dataset.ts);
-            el.textContent = getTimeRelative(timestamp);
-            el.dateTime = new Date(timestamp).toISOString();
-        });
+  async function refresh() {
+    try {
+      const { songs, timestamp } = await getRecentTracks(5);
+      const list = document.querySelector('.track-list');
+      if (list) list.innerHTML = songs.map(renderTrack).join('');
+
+      const updatedEl = document.querySelector('#timestamp-music');
+      if (updatedEl) updatedEl.textContent = getTimeRelative(timestamp);
+    } catch (err) {
+      console.error('lastfm refresh failed, keeping build-time data', err);
     }
-    
+  }
+
+  function paintTimes() {
+    document.querySelectorAll<HTMLTimeElement>('time[data-ts]').forEach((el) => {
+      const ts = Number(el.dataset.ts);
+      el.textContent = getTimeRelative(ts);
+      el.dateTime = new Date(ts).toISOString();
+    });
+  }
+
+  paintTimes();
+  refresh();
+  document.addEventListener('astro:page-load', () => {
     paintTimes();
-    document.addEventListener('astro:page-load', paintTimes);
+    refresh();
+  });
 </script>
