@@ -31,18 +31,22 @@ const frontmatter = {
   import { renderTrack } from '../modules/renderTrack';
   import getTimeRelative from '../modules/getTimeRelative';
 
-  async function refresh() {
-    try {
-      const { songs, timestamp } = await getRecentTracks(5);
+  const refresh = async () => {
       const list = document.querySelector('.track-list');
-      if (list) list.innerHTML = songs.map(renderTrack).join('');
+      list?.setAttribute('data-loading', 'true');
 
-      const updatedEl = document.querySelector('#timestamp-music');
-      if (updatedEl) updatedEl.textContent = getTimeRelative(timestamp);
-    } catch (err) {
-      console.error('lastfm refresh failed, keeping build-time data', err);
-    }
-  }
+      try {
+          const { songs, timestamp } = await getRecentTracks(5);
+          if (list) list.innerHTML = songs.map(renderTrack).join('');
+
+          const updatedEl = document.getElementById('timestamp-music');
+          if (updatedEl) updatedEl.textContent = getTimeRelative(timestamp);
+      } catch (err) {
+          console.error('lastfm refresh failed, keeping build-time data', err);
+      } finally {
+          list?.removeAttribute('data-loading');
+      }
+  };
 
   function paintTimes() {
     document.querySelectorAll<HTMLTimeElement>('time[data-ts]').forEach((el) => {
