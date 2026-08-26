@@ -1,8 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Button from '../components/Button.astro';
+import Slug from '../components/Slug.astro';
 const title = "shojo.me";
-const description = "i'm a fullstack developer, designer and software architect."
+const description = "i'm a fullstack developer, designer and software engineer."
 ---
 <Layout title={title} description={description}>
     <section id="about">
@@ -33,7 +34,7 @@ const description = "i'm a fullstack developer, designer and software architect.
     <section id="interests">
         <h2>interests</h2>
         <p>
-            i enjoy <a id="typing" class="dotted" href="/typing/#heading">typing</a>, <a id="cinema" class="dotted" href="/cinema/#heading">cinema</a>, <a id="music" class="dotted" href="/music/#heading">music</a>, <a id="games" class="dotted" href="/games/#heading">games</a> and learning new things!<br>
+            i enjoy <Slug path="typing" />, <Slug path="cinema" />, <Slug path="music" />, <Slug path="games" />, <Slug path="anime" />, <Slug path="books" /> and learning!<br>
             i'm currently single and identify as <a id="transfeminine" class="dotted" href="/blurb/transfeminine/#heading">transfeminine</a>
             &nbsp;and <a id="pansexual" class="dotted" href="/blurb/pansexual/#heading">pansexual</a>.
         </p>
