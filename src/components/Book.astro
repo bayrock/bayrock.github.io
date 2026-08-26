@@ -1,0 +1,31 @@
+---
+import type { Book } from '../modules/getRecentBooks';
+import { getBookLabel, isActivelyReading } from '../modules/getBookLabel';
+interface Props { book: Book }
+const { book } = Astro.props;
+
+const label = getBookLabel(book);
+const statusClass = isActivelyReading(book) ? 'badge--watching' : 'badge--planned';
+---
+<li class="book">
+  <a href={book.bookUrl} target="_blank" rel="noopener">
+    <img
+      class="book__cover"
+      src={book.image ?? '/images/poster-placeholder.svg'}
+      alt={`${book.title} cover`}
+      loading="lazy" width="50" height="75"
+    />
+  </a>
+  <div class="book__meta">
+    <a class="link book__title" href={book.bookUrl} target="_blank" rel="noopener">
+      {book.title}
+    </a>
+    <small class="gray">{book.author}</small>
+    <div class="book__right">
+      <span class={`badge badge--item ${statusClass}`}>{label}</span>
+      {book.rating !== null && (
+        <small class="gray">{'★'.repeat(book.rating)}{'☆'.repeat(5 - book.rating)}</small>
+      )}
+    </div>
+  </div>
+</li>

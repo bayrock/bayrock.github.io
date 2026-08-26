@@ -1,0 +1,30 @@
+/* Books */
+.book-list { list-style: none; padding: 0; margin-top: 1rem; }
+
+.book-list[data-loading="true"] {
+    opacity: 0.55;
+    filter: saturate(0.6);
+    pointer-events: none;
+    transition: opacity 0.25s ease, filter 0.25s ease;
+}
+
+.book {
+    display: flex;
+    gap: 0.75rem;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid #1a1a1a;
+    text-indent: 0;
+}
+.book__cover { object-fit: cover; border-radius: 3px; flex-shrink: 0; background: #111; }
+.book__meta { display: flex; flex-direction: column; gap: 0.25rem; min-width: 0; }
+.book__title {
+    color: white;
+    font-family: var(--body);
+    font-size: 0.95rem;
+    line-height: 1.25;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.book__right { display: flex; align-items: center; gap: 6px; margin-top: 2px; }

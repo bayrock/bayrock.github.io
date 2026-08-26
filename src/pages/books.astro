@@ -1,0 +1,53 @@
+---
+import ArticleLayout from '../layouts/ArticleLayout.astro';
+import Book from '../components/Book.astro';
+import { getRecentBooks } from '../modules/getRecentBooks';
+import getTimeRelative from "../modules/getTimeRelative";
+
+const { books, timestamp } = await getRecentBooks(5);
+
+const description = "serene's reading list";
+const frontmatter = {
+    title: 'now reading',
+    citation: {
+        url: 'https://api.shojo.me/goodreads',
+        name: 'api.shojo.me'
+    },
+    backlink: {
+        url: '/#books',
+        name: '/home'
+    },
+    timestamp: getTimeRelative(timestamp)
+}
+---
+<ArticleLayout title={frontmatter.title} frontmatter={frontmatter} description={description}>
+  <ul class="book-list">
+    {books.map((book) => <Book book={book} />)}
+  </ul>
+</ArticleLayout>
+
+<script>
+  import { getRecentBooks } from '../modules/getRecentBooks';
+  import { renderBook } from '../modules/renderBook';
+  import getTimeRelative from '../modules/getTimeRelative';
+
+  const refresh = async () => {
+      const list = document.querySelector('.book-list');
+      list?.setAttribute('data-loading', 'true');
+
+      try {
+          const { books, timestamp } = await getRecentBooks(5);
+          if (list) list.innerHTML = books.map(renderBook).join('');
+
+          const updatedEl = document.getElementById('timestamp-goodreads');
+          if (updatedEl) updatedEl.textContent = getTimeRelative(timestamp);
+      } catch (err) {
+          console.error('goodreads refresh failed, keeping build-time data', err);
+      } finally {
+          list?.removeAttribute('data-loading');
+      }
+  };
+
+  refresh();
+  document.addEventListener('astro:page-load', refresh);
+</script>
