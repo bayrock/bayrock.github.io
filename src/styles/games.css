@@ -1,0 +1,28 @@
+/* Games */
+.game-list { list-style: none; padding: 0; margin-top: 1rem; }
+
+.game-list[data-loading="true"] {
+    opacity: 0.55;
+    filter: saturate(0.6);
+    pointer-events: none;
+    transition: opacity 0.25s ease, filter 0.25s ease;
+}
+
+.game {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid #1a1a1a;
+    text-indent: 0;
+}
+.game__art { object-fit: cover; flex-shrink: 0; border-radius: 4px; background: #111; }
+.game__meta { display: flex; flex-direction: column; gap: 0.25rem; min-width: 0; }
+.game__title {
+    color: white;
+    font-family: var(--body);
+    font-size: 1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

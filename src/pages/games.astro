@@ -1,0 +1,53 @@
+---
+import ArticleLayout from '../layouts/ArticleLayout.astro';
+import Game from '../components/Game.astro';
+import { getRecentGames } from '../modules/getRecentGames';
+import getTimeRelative from "../modules/getTimeRelative";
+
+const { games, timestamp } = await getRecentGames(5);
+
+const description = "serene's steam library";
+const frontmatter = {
+    title: 'no lifing',
+    citation: {
+        url: 'https://api.shojo.me/steam',
+        name: 'api.shojo.me'
+    },
+    backlink: {
+        url: '/#steam',
+        name: '/home'
+    },
+    timestamp: getTimeRelative(timestamp)
+}
+---
+<ArticleLayout title={frontmatter.title} frontmatter={frontmatter} description={description}>
+  <ul class="game-list">
+    {games.map((game) => <Game game={game} />)}
+  </ul>
+</ArticleLayout>
+
+<script>
+  import { getRecentGames } from '../modules/getRecentGames';
+  import { renderGame } from '../modules/renderGame';
+  import getTimeRelative from '../modules/getTimeRelative';
+
+  const refresh = async () => {
+      const list = document.querySelector('.game-list');
+      list?.setAttribute('data-loading', 'true');
+
+      try {
+          const { games, timestamp } = await getRecentGames(5);
+          if (list) list.innerHTML = games.map(renderGame).join('');
+
+          const updatedEl = document.getElementById('timestamp-steam');
+          if (updatedEl) updatedEl.textContent = getTimeRelative(timestamp);
+      } catch (err) {
+          console.error('steam refresh failed, keeping build-time data', err);
+      } finally {
+          list?.removeAttribute('data-loading');
+      }
+  };
+
+  refresh();
+  document.addEventListener('astro:page-load', refresh);
+</script>

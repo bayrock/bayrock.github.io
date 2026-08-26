@@ -1,0 +1,35 @@
+---
+// src/components/Game.astro
+import type { SteamGame } from '../modules/getRecentGames';
+import { minutesToHours } from '../modules/getTimeConversion';
+interface Props { game: SteamGame }
+const { game } = Astro.props;
+
+const capsule = game.image ?? `https://cdn.cloudflare.steamstatic.com/steam/apps/${game.appId}/header.jpg`;
+const totalHours = Math.round(minutesToHours(game.playtime));
+const recentHours = Math.round(minutesToHours(game.playtimeRecent) * 10) / 10;
+---
+<li class="game">
+  <a href={`https://store.steampowered.com/app/${game.appId}`} target="_blank" rel="noopener">
+    <img
+      class="game__art"
+      src={capsule}
+      alt={`${game.name} capsule art`}
+      loading="lazy" width="120" height="56"
+      onerror="this.onerror=null;this.src='/images/game-placeholder.svg';"
+    />
+  </a>
+  <div class="game__meta">
+    <a class="link game__title" href={`https://store.steampowered.com/app/${game.appId}`} target="_blank" rel="noopener">
+      {game.name}
+    </a>
+    <small class="gray">{totalHours} hrs total</small>
+    {game.playtimeRecent > 0 && (
+      <span class="badge badge--item">{recentHours} hrs / 2wk</span>
+    )}
+  </div>
+</li>
+
+<style>
+  /* moved to shared.css — see renderGame.ts note */
+</style>
