@@ -1,0 +1,39 @@
+/* Anime */
+.anime-list { list-style: none; padding: 0; margin-top: 1rem; }
+
+.anime-list[data-loading="true"] {
+    opacity: 0.55;
+    filter: saturate(0.6);
+    pointer-events: none;
+    transition: opacity 0.25s ease, filter 0.25s ease;
+}
+
+.anime {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.55rem 0;
+    border-bottom: 1px solid #1a1a1a;
+    text-indent: 0;
+}
+.anime__art { object-fit: cover; border-radius: 3px; flex-shrink: 0; background: #111; }
+.anime__meta { display: flex; flex-direction: column; flex: 1; min-width: 0; }
+.anime__title {
+    color: white;
+    font-family: var(--body);
+    font-size: 0.95rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.anime__right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 3px;
+    flex-shrink: 0;
+}
+.anime__progress { font-size: 0.7rem; }
+
+.badge--watching { background-color: var(--accent); color: black; }
+.badge--planned { background-color: #333; color: white; }
