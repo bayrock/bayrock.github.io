@@ -13,7 +13,7 @@ export interface LetterboxdFilm {
 
 const API_URL = "https://api.shojo.me/letterboxd";
 
-export async function getRecentFilms(limit = 12): Promise<{ films: LetterboxdFilm[]; timestamp: number }> {
+export async function getRecentFilms(limit = 10): Promise<{ films: LetterboxdFilm[]; timestamp: number }> {
   const res = await fetch(API_URL);
   if (!res.ok) throw new Error(`letterboxd fetch failed: ${res.status}`);
   const { films, timestamp }: { films: LetterboxdFilm[]; timestamp: number } = await res.json();

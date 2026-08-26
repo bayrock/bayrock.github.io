@@ -20,7 +20,7 @@ export interface Tracks {
 
 const API_URL = "https://api.shojo.me/lastfm";
 
-export async function getRecentTracks(limit = 25): Promise<{songs: ScrobbleGroup[], timestamp: number}> {
+export async function getRecentTracks(limit = 10): Promise<{songs: ScrobbleGroup[], timestamp: number}> {
   const res = await fetch(API_URL);
   if (!res.ok) throw new Error(`lastfm fetch failed: ${res.status}`);
   const { tracks, timestamp }: { tracks: LastFmTrack[], timestamp: number } = await res.json();
