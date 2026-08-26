@@ -14,7 +14,7 @@ export function renderAnime(entry: AnimeEntry): string {
     <li class="anime">
       <img class="anime__art" src="${entry.image ?? '/images/poster-placeholder.svg'}" alt="${escapeHTML(entry.title)} cover" loading="lazy" width="42" height="60" />
       <div class="anime__meta">
-        <a class="link anime__title" href="${entry.url}" target="_blank" rel="noopener">${escapeHTML(entry.title)}</a>
+        <a class="link anime__title invert-white" href="${entry.url}" target="_blank" rel="noopener">${escapeHTML(entry.title)}</a>
         <small class="gray">${escapeHTML(entry.type)}</small>
       </div>
       <div class="anime__right">

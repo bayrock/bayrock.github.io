@@ -16,7 +16,7 @@ const starPercent = (film.rating / 5) * 100;
     />
   </a>
   <div class="film__meta">
-    <a class="link film__title" href={film.url} target="_blank" rel="noopener">
+    <a class="link film__title invert-white" href={film.url} target="_blank" rel="noopener">
       {film.title} <small class="gray">({film.year})</small>
     </a>
     <div class="film__rating" style={`--rating: ${starPercent}%`}>

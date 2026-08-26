@@ -20,7 +20,7 @@ export function renderBook(book: Book): string {
         <img class="book__cover" src="${book.image ?? '/images/poster-placeholder.svg'}" alt="${escapeHTML(book.title)} cover" loading="lazy" width="50" height="75" />
       </a>
       <div class="book__meta">
-        <a class="link book__title" href="${book.bookUrl}" target="_blank" rel="noopener">${escapeHTML(book.title)}</a>
+        <a class="link book__title invert-white" href="${book.bookUrl}" target="_blank" rel="noopener">${escapeHTML(book.title)}</a>
         <small class="gray">${escapeHTML(book.author)}</small>
         <div class="book__right">
           <span class="badge badge--item ${statusClass}">${escapeHTML(label)}</span>

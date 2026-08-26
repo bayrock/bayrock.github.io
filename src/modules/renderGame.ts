@@ -19,7 +19,7 @@ export function renderGame(game: SteamGame): string {
         <img class="game__art" src="${capsule}" alt="${escapeHTML(game.name)} capsule art" loading="lazy" width="120" height="56" onerror="this.onerror=null;this.src='/images/game-placeholder.svg';" />
       </a>
       <div class="game__meta">
-        <a class="link game__title" href="${storeUrl}" target="_blank" rel="noopener">${escapeHTML(game.name)}</a>
+        <a class="link game__title invert-white" href="${storeUrl}" target="_blank" rel="noopener">${escapeHTML(game.name)}</a>
         <small class="gray">${totalHours} hrs total</small>
         ${game.playtimeRecent > 0 ? `<span class="badge badge--item">${recentHours} hrs / 2wk</span>` : ''}
       </div>
