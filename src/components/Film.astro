@@ -1,0 +1,47 @@
+---
+// src/components/Film.astro
+import type { LetterboxdFilm } from '../modules/getRecentFilms';
+interface Props { film: LetterboxdFilm }
+const { film } = Astro.props;
+
+const starPercent = (film.rating / 5) * 100;
+---
+<li class="film">
+  <a href={film.url} target="_blank" rel="noopener">
+    <img
+      class="film__poster"
+      src={film.image ?? '/images/poster-placeholder.svg'}
+      alt={`${film.title} poster`}
+      loading="lazy" width="90" height="135"
+    />
+  </a>
+  <div class="film__meta">
+    <a class="link film__title" href={film.url} target="_blank" rel="noopener">
+      {film.title} <small class="gray">({film.year})</small>
+    </a>
+    <div class="film__rating" style={`--rating: ${starPercent}%`}>
+      <span class="film__rating-track">☆☆☆☆☆</span>
+      <span class="film__rating-fill">★★★★★</span>
+    </div>
+    <div class="film__badges">
+      {film.rewatch && <span class="badge badge--item">rewatch</span>}
+      {film.liked && <span class="badge badge--item accent">♥ liked</span>}
+    </div>
+    <small class="gray film__date" data-ts={film.timestamp}>{film.watchedDate}</small>
+  </div>
+</li>
+
+<style>
+  .film {
+    display: flex;
+    gap: 0.75rem;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid #1a1a1a;
+    text-indent: 0;
+  }
+  .film__poster { object-fit: cover; flex-shrink: 0; border-radius: 4px; background: #111; }
+  .film__meta { display: flex; flex-direction: column; gap: 0.25rem; min-width: 0; }
+  .film__title { color: white; font-family: var(--body); font-size: 1rem; }
+  .film__badges { display: flex; gap: 4px; }
+  .film__date { font-size: 0.75rem; }
+</style>

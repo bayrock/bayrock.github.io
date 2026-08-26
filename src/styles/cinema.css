@@ -1,0 +1,45 @@
+/* Cinema  */
+.film-list { list-style: none; padding: 0; margin-top: 1rem; }
+
+.film-list[data-loading="true"] {
+    opacity: 0.55;
+    filter: saturate(0.6);
+    pointer-events: none;
+    transition: opacity 0.25s ease, filter 0.25s ease;
+}
+
+.film {
+    display: flex;
+    gap: 0.75rem;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid #1a1a1a;
+    text-indent: 0;
+}
+.film__poster { object-fit: cover; flex-shrink: 0; border-radius: 4px; background: #111; }
+.film__meta { display: flex; flex-direction: column; gap: 0.25rem; min-width: 0; }
+.film__title { color: white; font-family: var(--body); font-size: 1rem; }
+.film__badges { display: flex; gap: 4px; }
+.film__date { font-size: 0.75rem; }
+
+.film__rating {
+    position: relative;
+    display: inline-block;
+    width: 5.5ch;          /* explicit width, unambiguous containing block */
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    line-height: 1;
+}
+.film__rating-track {
+    display: block;
+    color: #333;
+}
+.film__rating-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: var(--rating);
+    overflow: hidden;
+    white-space: nowrap;
+    color: var(--brand);
+}

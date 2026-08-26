@@ -1,0 +1,53 @@
+---
+import ArticleLayout from '../layouts/ArticleLayout.astro';
+import Film from '../components/Film.astro';
+import { getRecentFilms } from '../modules/getRecentFilms';
+import getTimeRelative from "../modules/getTimeRelative";
+
+const { films, timestamp } = await getRecentFilms(3);
+
+const description = "serene's recently watched films";
+const frontmatter = {
+    title: 'now watching',
+    citation: {
+        url: 'https://api.shojo.me/letterboxd',
+        name: 'api.shojo.me'
+    },
+    backlink: {
+        url: '/#letterboxd',
+        name: '/home'
+    },
+    timestamp: getTimeRelative(timestamp)
+}
+---
+<ArticleLayout title={frontmatter.title} frontmatter={frontmatter} description={description}>
+  <ul class="film-list">
+    {films.map((film) => <Film film={film} />)}
+  </ul>
+</ArticleLayout>
+
+<script>
+  import { getRecentFilms } from '../modules/getRecentFilms';
+  import { renderFilm } from '../modules/renderFilm';
+  import getTimeRelative from '../modules/getTimeRelative';
+
+  const refresh = async () => {
+      const list = document.querySelector('.film-list');
+      list?.setAttribute('data-loading', 'true');
+
+      try {
+          const { films, timestamp } = await getRecentFilms(3);
+          if (list) list.innerHTML = films.map(renderFilm).join('');
+
+          const updatedEl = document.getElementById('timestamp-letterboxd');
+          if (updatedEl) updatedEl.textContent = getTimeRelative(timestamp);
+      } catch (err) {
+          console.error('letterboxd refresh failed, keeping build-time data', err);
+      } finally {
+          list?.removeAttribute('data-loading');
+      }
+  };
+
+  refresh();
+  document.addEventListener('astro:page-load', refresh);
+</script>
