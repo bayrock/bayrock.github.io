@@ -1,3 +1,5 @@
+import type { LetterboxdFilm } from './getRecentFilms';
+
 export function renderFilm(film: LetterboxdFilm): string {
   const starPercent = (film.rating / 5) * 100;
 
