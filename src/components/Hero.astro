@@ -1,12 +1,18 @@
 ---
 import Avatar from '../components/Avatar.astro';
+const isHome = Astro.url.pathname === '/';
 ---
-<aside class="center" style="margin-top: 20px;">
+<aside class={`center ${isHome ? '' : 'hero--compact'}`} style="margin-top: 20px;">
     <figure>
-        <Avatar />
+        <Avatar compact={!isHome} />
         <figcaption>
             <h1>serene<span title="pronouns" class="gray hidden" style="font-size: 0.8rem;"> (she/they)</span></h1>
-            <span class="badge">developer & designer</span>
+            {isHome && <span class="badge">developer & designer</span>}
         </figcaption>
     </figure>
 </aside>
+
+<style>
+    .hero--compact { margin-top: 10px !important; }
+    .hero--compact h1 { font-size: 1.6rem; }
+</style>

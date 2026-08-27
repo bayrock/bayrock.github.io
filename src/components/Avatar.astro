@@ -1,18 +1,26 @@
 ---
 import { avatar } from '../../custom.config.mjs';
-const pfp = `https://avatars.githubusercontent.com/u/${avatar.githubID}?s=${avatar.size}`
+const { compact = false } = Astro.props;
+const pfp = `https://avatars.githubusercontent.com/u/${avatar.githubID}?s=${avatar.size}`;
+const mobileSize = compact ? 70 : 120;
+const desktopSize = compact ? 80 : 140;
 ---
 <picture>
-    <!-- <source srcset={avatar} type="image/webp"> -->
-    <img src={pfp} alt="profile picture" id="pfp" class="circle blur" width="120" height="120">
+    <img
+        src={pfp}
+        alt="profile picture"
+        id="pfp"
+        class="circle blur"
+        width={mobileSize} height={mobileSize}
+        transition:name="avatar"
+    />
 </picture>
 
-<style>
+<style define:vars={{ mobileSize: `${mobileSize}px`, desktopSize: `${desktopSize}px` }}>
+    #pfp { width: var(--mobileSize); height: var(--mobileSize); }
+
     @media only screen and (min-width: 600px) {
-        #pfp {
-            width: 140px;
-            height: 140px;
-        }
+        #pfp { width: var(--desktopSize); height: var(--desktopSize); }
     }
 </style>
 
@@ -22,9 +30,10 @@ const pfp = `https://avatars.githubusercontent.com/u/${avatar.githubID}?s=${avat
         const resize = pfp?.getAttribute("src")?.split("?")[0];
         if (!pfp || !resize) return;
 
-        pfp.setAttribute("src", resize);
-        pfp.classList.add("unblur");
+        const isFirefox = navigator.userAgent.includes("Firefox");
+        if (!isFirefox) pfp.classList.add("unblur");
         pfp.classList.remove("blur");
+        pfp.setAttribute("src", resize);
     }
 
     document.addEventListener('astro:page-load', updatePFP);
