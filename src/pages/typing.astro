@@ -1,6 +1,11 @@
 ---
 import ArticleLayout from '../layouts/ArticleLayout.astro';
 import TypingStats from "../components/TypingStats.astro";
+import { getTypingStats } from '../modules/getTypingStats';
+import getTimeRelative from "../modules/getTimeRelative";
+
+const data = await getTypingStats();
+
 const description = "serene's typing stats";
 const frontmatter = {
     title: 'typing',
@@ -12,10 +17,10 @@ const frontmatter = {
         url: '/#typing',
         name: '/home'
     },
-    timestamp: '0 hours ago'
+    timestamp: getTimeRelative(data.timestamp)
 }
 ---
 
-<ArticleLayout frontmatter={frontmatter}, description={description}>
-    <TypingStats />
+<ArticleLayout title={frontmatter.title} frontmatter={frontmatter} description={description}>
+    <TypingStats data={data} />
 </ArticleLayout>

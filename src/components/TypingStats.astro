@@ -1,30 +1,43 @@
 ---
-const model = "Apple Magic"
-const switches = "Scissor"
-const layout = "QWERTY"
+import type { TypingData } from '../modules/getTypingStats';
+import { secondsToHours } from "../modules/getTimeConversion";
+interface Props { data: TypingData }
+const { data } = Astro.props;
+const { qwerty, profile } = data;
+
+const completedTests = qwerty.stats.completedTests;
+const failedTests = qwerty.stats.startedTests - completedTests;
+const timeTyping = Math.ceil(secondsToHours(qwerty.stats.timeTyping));
+const qwertyWPM = Math.ceil(qwerty.bests?.words?.["10"]?.[0]?.wpm ?? 0);
+const streak = qwerty.streak;
+
+const model = profile?.keyboard?.model ?? 'Apple Magic';
+const icon = model.split(" ")[0]?.toLowerCase() ?? 'apple'
+const switches = profile?.keyboard?.switches ?? 'Scissor';
+const layout = profile?.keyboard?.layout ?? 'QWERTY';
 ---
 <section id="specs" class="flex">
-    <img width="30" height="35" src="/icons/apple.svg" alt="model"> <span class="flex column">Model <small class="gray">{model}</small></span><hr>
-    <img width="22" height="34" class="invert-white" src="/icons/switch.svg" alt="switch"> <span class="flex column">Switch <small class="gray">{switches}</small></span><hr>
-    <img width="38" height="32" class="invert-white" src="/icons/keyboard.svg" alt="layout"> <span class="flex column">Layout <small class="gray">{layout}</small></span>
+    <img width="30" height="35" class={`${icon == 'apple' ? '' : 'invert-white'}`} src={`/icons/${icon}.svg`} alt="model"> <span class="flex column">Model <small id="modelElement" class="gray">{model}</small></span><hr>
+    <img width="22" height="34" class="invert-white" src="/icons/switch.svg" alt="switch"> <span class="flex column">Switch <small id="switchElement" class="gray">{switches}</small></span><hr>
+    <img width="38" height="32" class="invert-white" src="/icons/keyboard.svg" alt="layout"> <span class="flex column">Layout <small id="layoutElement" class="gray">{layout}</small></span>
 </section>
 <section id="details" class="flex" style="justify-content: space-between;">
     <section id="statistics">
         <h2>statistics</h2>
         <ul class="badge__list">
-            <li><span class="badge badge--item">passed</span> <b><span id="passedElement" class="text-loader">0000</span></b> tests <span class="accent">✔</span></li>
-            <li><span class="badge badge--item">failed</span> <b><span id="failedElement" class="text-loader">00000</span></b> tests <span style="color: red;">𝐱</span></li>
-            <li><span class="badge badge--item">typed</span> <b><span id="timeElement" class="text-loader">00</span></b> hours <span class="gray">⏰</span></li>
+            <li><span class="badge badge--item">passed</span> <b><span id="passedElement">{completedTests}</span></b> tests <span class="accent">✔</span></li>
+            <li><span class="badge badge--item">failed</span> <b><span id="failedElement">{failedTests}</span></b> tests <span style="color: red;">𝐱</span></li>
+            <li><span class="badge badge--item">typed</span> <b><span id="timeElement">{timeTyping}</span></b> hours <span class="gray">⏰</span></li>
         </ul>
     </section>
     <section id="speed">
         <h2>speed</h2>
         <ul class="badge__list">
-            <li><span class="badge badge--item">wpm</span> <b><span id="qwertyElement" class="text-loader">000</span></b> <span class="gray">⌨</span></li>
+            <li><span class="badge badge--item">wpm</span> <b><span id="qwertyElement">{qwertyWPM}</span></b> <span class="gray">⌨</span></li>
         </ul>
         <h2>streak</h2>
         <ul class="badge__list">
-            <li><span class="badge badge--item">days</span> <b><span id="streakElement" class="text-loader">000</span></b> <span class="gray">🔥</span></li>
+            <li><span class="badge badge--item">days</span> <b><span id="streakElement">{streak}</span></b> <span class="gray">🔥</span></li>
         </ul>
     </section>
 </section>
@@ -46,26 +59,16 @@ const layout = "QWERTY"
 </style>
 
 <script>
+    import { getTypingStats } from '../modules/getTypingStats';
     import { secondsToHours } from "../modules/getTimeConversion";
     import getTimeRelative from "../modules/getTimeRelative";
 
-    const getMonkeyData = async () => {
-        try {
-            const response = await fetch("https://api.shojo.me/monkeytype");
-            if (!response.ok)
-                throw new Error(`Error: ${response.status} - ${response.statusText}`);
-            return await response.json();
-        } catch (error) {
-            console.error(error);
-        }
-    }
-
     const updateData = (data) => {
-        const { qwerty, timestamp } = data;
+        const { qwerty, profile, timestamp } = data;
         const completedTests = qwerty.stats.completedTests;
         const failedTests = qwerty.stats.startedTests - completedTests;
         const timeTyping = Math.ceil(secondsToHours(qwerty.stats.timeTyping));
-        const qwertyWPM = Math.ceil(qwerty.bests.words[10][0].wpm);
+        const qwertyWPM = Math.ceil(qwerty.bests?.words?.["10"]?.[0]?.wpm ?? 0);
         const streak = qwerty.streak;
         const lastUpdated = getTimeRelative(timestamp);
 
@@ -74,23 +77,29 @@ const layout = "QWERTY"
         const timeElement = document.getElementById("timeElement");
         const qwertyElement = document.getElementById("qwertyElement");
         const streakElement = document.getElementById("streakElement");
+        const modelElement = document.getElementById("modelElement");
+        const switchElement = document.getElementById("switchElement");
+        const layoutElement = document.getElementById("layoutElement");
         const timestampElement = document.getElementById("timestamp-typing");
 
-        if (passedElement) passedElement.innerHTML = completedTests;
-        if (failedElement) failedElement.innerHTML = failedTests;
-        if (timeElement) timeElement.innerHTML = timeTyping;
-        if (qwertyElement) qwertyElement.innerHTML = qwertyWPM;
-        if (streakElement) streakElement.innerHTML = streak;
-        if (timestampElement) timestampElement.innerHTML = lastUpdated;
-
-        document.querySelectorAll(".text-loader").forEach((e) => {
-            e.classList.remove("text-loader");
-        });
+        if (passedElement) passedElement.textContent = String(completedTests);
+        if (failedElement) failedElement.textContent = String(failedTests);
+        if (timeElement) timeElement.textContent = String(timeTyping);
+        if (qwertyElement) qwertyElement.textContent = String(qwertyWPM);
+        if (streakElement) streakElement.textContent = String(streak);
+        if (modelElement) modelElement.textContent = profile?.keyboard?.model ?? '—';
+        if (switchElement) switchElement.textContent = profile?.keyboard?.switches ?? '—';
+        if (layoutElement) layoutElement.textContent = profile?.keyboard?.layout ?? '—';
+        if (timestampElement) timestampElement.textContent = lastUpdated;
     }
 
     const refresh = async () => {
-        const data = await getMonkeyData();
-        if (data) updateData(data);
+        try {
+            const data = await getTypingStats();
+            updateData(data);
+        } catch (err) {
+            console.error('monkeytype refresh failed, keeping build-time data', err);
+        }
     }
 
     refresh();
