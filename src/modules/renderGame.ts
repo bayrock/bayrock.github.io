@@ -1,11 +1,6 @@
 import type { SteamGame } from './getRecentGames';
 import { minutesToHours } from './getTimeConversion';
-
-function escapeHTML(str: string) {
-  return str.replace(/[&<>"']/g, (c) => ({
-    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
-  }[c]!));
-}
+import escapeHTML from './escapeHTML';
 
 export function renderGame(game: SteamGame): string {
   const capsule = game.image ?? `https://cdn.cloudflare.steamstatic.com/steam/apps/${game.appId}/header.jpg`;

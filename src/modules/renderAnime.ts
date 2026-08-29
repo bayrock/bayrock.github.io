@@ -1,10 +1,5 @@
 import type { Anime } from './getRecentAnime';
-
-function escapeHTML(str: string) {
-  return str.replace(/[&<>"']/g, (c) => ({
-    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
-  }[c]!));
-}
+import escapeHTML from './escapeHTML';
 
 export function renderAnime(anime: Anime): string {
   const statusClass = anime.status === 'Watching' ? 'badge--watching' : 'badge--planned';

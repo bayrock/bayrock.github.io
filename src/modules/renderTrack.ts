@@ -1,12 +1,7 @@
 
 import type { ScrobbleGroup } from './getRecentTracks';
 import getTimeRelative from './getTimeRelative';
-
-function escapeHTML(str: string) {
-  return str.replace(/[&<>"']/g, (c) => ({
-    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
-  }[c]!));
-}
+import escapeHTML from './escapeHTML';
 
 export function renderTrack(group: ScrobbleGroup): string {
   const { track, playCount } = group;

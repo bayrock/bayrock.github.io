@@ -1,11 +1,6 @@
 import type { Book } from './getRecentBooks';
 import { getBookLabel, isActivelyReading } from './getBookLabel';
-
-function escapeHTML(str: string) {
-  return str.replace(/[&<>"']/g, (c) => ({
-    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
-  }[c]!));
-}
+import escapeHTML from './escapeHTML';
 
 export function renderBook(book: Book): string {
   const label = getBookLabel(book);
