@@ -7,7 +7,7 @@ export function renderFilm(film: LetterboxdFilm): string {
   return `
     <li class="film">
       <a href="${film.url}" target="_blank" rel="noopener">
-        <img class="film__poster" src="${film.image ?? '/images/poster-placeholder.svg'}" alt="${stripHTML(film.title)} poster" loading="lazy" width="90" height="135" />
+        <img class="film__poster" src="${film.image ?? '/icons/square.svg'}" alt="${stripHTML(film.title)} poster" loading="lazy" width="90" height="135" />
       </a>
       <div class="film__meta">
         <a class="link film__title invert-white" href="${film.url}" target="_blank" rel="noopener">${stripHTML(film.title)} <small class="gray">(${film.year})</small></a>

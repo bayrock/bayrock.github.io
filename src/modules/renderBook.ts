@@ -17,7 +17,7 @@ export function renderBook(book: Book): string {
   return `
     <li class="book">
       <a href="${book.bookUrl}" target="_blank" rel="noopener">
-        <img class="book__cover" src="${book.image ?? '/images/poster-placeholder.svg'}" alt="${escapeHTML(book.title)} cover" loading="lazy" width="50" height="75" />
+        <img class="book__cover" src="${book.image ?? '/icons/square.svg'}" alt="${escapeHTML(book.title)} cover" loading="lazy" width="50" height="75" />
       </a>
       <div class="book__meta">
         <a class="link book__title invert-white" href="${book.bookUrl}" target="_blank" rel="noopener">${escapeHTML(book.title)}</a>

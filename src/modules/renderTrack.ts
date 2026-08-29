@@ -10,7 +10,7 @@ function escapeHTML(str: string) {
 
 export function renderTrack(group: ScrobbleGroup): string {
   const { track, playCount } = group;
-  const art = track.image ?? '/icons/placeholder.svg';
+  const art = track.image ?? '/icons/circle.svg';
   return `
     <li class="track">
       <img class="track__art circle invert-white" src="${art}" alt="${escapeHTML(track.album)} cover" loading="lazy" width="44" height="44" />
