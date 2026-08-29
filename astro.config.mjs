@@ -7,6 +7,14 @@ export default defineConfig({
   },
   redirects: {
     '/home': '/#home',
-    '/keyboard': '/typing/#heading'
+    '/monkeytype': '/typing/#heading',
+    '/keyboard': '/typing/#heading',
+    '/letterboxd': '/cinema/#heading',
+    '/movies': '/cinema/#heading',
+    '/films': '/cinema/#heading',
+    '/steam': '/games/#heading',
+    '/lastfm': '/music/#heading',
+    '/myanimelist': '/anime/#heading',
+    '/goodreads': '/books/#heading'
   }
 });
