@@ -7,7 +7,7 @@ const { track } = group;
 ---
 <li class="track">
   <img
-    class="track__art circle invert-white"
+    class=`track__art circle ${track.image || 'invert-black'}`
     src={track.image || '/icons/circle.svg'}
     alt={`${track.album} cover`}
     loading="lazy" width="44" height="44"

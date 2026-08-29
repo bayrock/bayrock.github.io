@@ -1,28 +1,28 @@
 ---
-import type { AnimeEntry } from '../modules/getRecentAnime';
-interface Props { entry: AnimeEntry }
-const { entry } = Astro.props;
+import type { Anime } from '../modules/getRecentAnime';
+interface Props { anime: Anime }
+const { anime } = Astro.props;
 
-const statusClass = entry.status === 'Watching' ? 'badge--watching' : 'badge--planned';
-const showProgress = entry.episodesTotal > 1;
+const statusClass = anime.status === 'Watching' ? 'badge--watching' : 'badge--planned';
+const showProgress = anime.episodesTotal > 1;
 ---
 <li class="anime">
   <img
-    class="anime__art"
-    src={entry.image ?? '/icons/square.svg'}
-    alt={`${entry.title} cover`}
+    class=`anime__art ${anime.image || 'invert-black'}`
+    src={anime.image || '/icons/square.svg'}
+    alt={`${anime.title} cover`}
     loading="lazy" width="42" height="60"
   />
   <div class="anime__meta">
-    <a class="link anime__title invert-white" href={entry.url} target="_blank" rel="noopener">
-      {entry.title}
+    <a class="link anime__title invert-white" href={anime.url} target="_blank" rel="noopener">
+      {anime.title}
     </a>
-    <small class="gray">{entry.type}</small>
+    <small class="gray">{anime.type}</small>
   </div>
   <div class="anime__right">
-    <span class={`badge badge--item ${statusClass}`}>{entry.status}</span>
+    <span class={`badge badge--item ${statusClass}`}>{anime.status}</span>
     {showProgress && (
-      <small class="gray anime__progress">{entry.episodesWatched}/{entry.episodesTotal} eps</small>
+      <small class="gray anime__progress">{anime.episodesWatched}/{anime.episodesTotal} eps</small>
     )}
   </div>
 </li>

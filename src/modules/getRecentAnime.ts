@@ -1,4 +1,4 @@
-export interface AnimeEntry {
+export interface Anime {
   title: string;
   type: string;
   url: string;
@@ -11,10 +11,10 @@ export interface AnimeEntry {
 
 const API_URL = "https://api.shojo.me/myanimelist";
 
-export async function getRecentAnime(limit = 10): Promise<{ anime: AnimeEntry[]; timestamp: number }> {
+export async function getRecentAnime(limit = 10): Promise<{ anime: Anime[]; timestamp: number }> {
   const res = await fetch(API_URL);
   if (!res.ok) throw new Error(`myanimelist fetch failed: ${res.status}`);
-  const { anime, timestamp }: { anime: AnimeEntry[]; timestamp: number } = await res.json();
+  const { anime, timestamp }: { anime: Anime[]; timestamp: number } = await res.json();
 
   return { anime: anime.slice(0, limit), timestamp };
 }

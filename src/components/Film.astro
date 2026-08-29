@@ -9,8 +9,8 @@ const starPercent = (film.rating / 5) * 100;
 <li class="film">
   <a href={film.url} target="_blank" rel="noopener">
     <img
-      class="film__poster"
-      src={film.image ?? '/icons/square.svg'}
+      class=`film__poster ${film.image || 'invert-black'}`
+      src={film.image || '/icons/square.svg'}
       alt={`${film.title} poster`}
       loading="lazy" width="90" height="135"
     />

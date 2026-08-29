@@ -10,8 +10,8 @@ const statusClass = isActivelyReading(book) ? 'badge--watching' : 'badge--planne
 <li class="book">
   <a href={book.bookUrl} target="_blank" rel="noopener">
     <img
-      class="book__cover"
-      src={book.image ?? '/icons/square.svg'}
+      class=`book__cover ${book.image || 'invert-black'}`
+      src={book.image || '/icons/square.svg'}
       alt={`${book.title} cover`}
       loading="lazy" width="50" height="75"
     />
